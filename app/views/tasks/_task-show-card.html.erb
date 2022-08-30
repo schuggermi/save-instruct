@@ -6,6 +6,10 @@
 
   <div>
     <h3>Instruction Steps</h3>
+    <% @task.steps.each do |step| %>
+    <%= step.instruction %>
+    <%= step.info %>
+    <% end %>
     <%# TODO - Need to implements the steps %>
   </div>
 
