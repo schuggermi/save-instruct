@@ -1,0 +1,7 @@
+<h1>Add a New Task</h1>
+
+<%= simple_form_for(@task) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>
