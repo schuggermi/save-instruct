@@ -8,19 +8,18 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("Hello from NFC Controller.");
   }
 
   async scanNewNfc() {
     if ("NDEFReader" in window) {
-      console.log("NDEFReader is availiable in browser.");
+      this.scanMessageTarget.innerText = "NDEFReader is availiable in browser.";
       try {
         const ndef = new window.NDEFReader();
         await ndef.scan();
 
-        console.log("Scan for NFC started successfully.");
+        this.scanMessageTarget.innerText = "Scan for NFC started successfully.";
         ndef.onreadingerror = () => {
-          console.log("Cannot read data from the NFC tag. Try another one.");
+          this.scanMessageTarget.innerText = "Cannot read data from the NFC tag. Try another one.";
         };
 
         ndef.onreading = (event) => {
@@ -28,21 +27,34 @@ export default class extends Controller {
           this.nfcFormTarget[1].value = `${window.location.origin}/tasks/${this.taskValue}`
         }
       } catch (error) {
-        console.log(`Error! Scan failed to start: ${error}.`);
+        this.scanMessageTarget.innerText = `Error! Scan failed to start: ${error}.`;
       }
     } else {
-      console.log("No NDEFReader is availiable in browser. Change to Mobile device...");
+      this.scanMessageTarget.innerText = "No NDEFReader is availiable in browser. Change to Mobile device...";
     }
   }
 
   async writeNewNfc() {
     const record = { recordType: "url", data: this.nfcFormTarget[1].value }
-    await ndef.write({
-      records: [record]
-    }).then(() => {
-      this.scanMessageTarget.innerText = `Value Saved!`
-    }).catch(error => {
-      this.scanMessageTarget.innerText = error
-    });
+
+    if ("NDEFReader" in window) {
+      this.scanMessageTarget.innerText = "NDEFReader is availiable in browser.";
+      try {
+        const ndef = new window.NDEFReader();
+        await ndef.write({records: [record]}).then(() => {
+          this.scanMessageTarget.innerText = "Writing to NFC was successfully.";
+        }).catch(error => {
+          this.scanMessageTarget.innerText = error
+        });
+
+        ndef.onwritingerror = () => {
+          this.scanMessageTarget.innerText = "Cannot write data to the NFC tag. Try another one.";
+        };
+      } catch (error) {
+        this.scanMessageTarget.innerText = `Error! Writing failed: ${error}.`;
+      }
+    } else {
+      this.scanMessageTarget.innerText = "No NDEFReader is availiable in browser. Change to Mobile device...";
+    }
   }
 }
