@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import NfcController from "./nfc_controller"
+application.register("nfc", NfcController)
