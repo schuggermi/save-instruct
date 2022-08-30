@@ -1,8 +1,12 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: :destroy
+  before_action :set_task, only: [:show, :destroy]
 
   def index
     @tasks = Task.all
+  end
+
+  def show
+    @employee_tasks = @task.employee_tasks
   end
 
   def new
