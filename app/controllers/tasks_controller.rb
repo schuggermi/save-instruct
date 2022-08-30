@@ -4,9 +4,19 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
   end
-  
+
   def new
     @task = Task.new
+    @task.steps.build
+  end
+
+  def create
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to tasks_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -15,6 +25,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def task_params
+    params.require(:task).permit(:name, :description, steps_attributes: %i[instruction info id])
+  end
 
   def set_task
     @task = Task.find(params[:id])
