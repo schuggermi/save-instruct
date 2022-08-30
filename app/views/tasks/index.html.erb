@@ -1,5 +1,7 @@
 <div class="container-fluid">
-  <h1>Tasks</h1>
+  <div>
+    <h1 class="text-center">Tasks</h1>
+  </div>
 
   <% @tasks.each do |task| %>
     <%= render "task-card", task: task %>

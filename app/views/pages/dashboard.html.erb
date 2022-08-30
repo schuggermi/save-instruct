@@ -2,3 +2,5 @@
 <%# TODO : Change the view for Manager and Employee %>
 <%= button_to "Add Task", new_task_path, :id => "new-task-btn",
       :class => "btn btn-success", :method => :get %>
+
+<%= link_to "Tasks", tasks_path, class: "btn btn-info" %>
