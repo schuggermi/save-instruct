@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <h1 class="text-center">Add NFC Chip to <%= @task.name %></h1>
+
+  <%= link_to 'Cancel', task_path(@task), class: "btn btn-outline-dark" %>
+
+  <div class="card nfc-new-card" data-controller="nfc" data-nfc-task-value="<%= @task.id %>">
+    <p data-nfc-target="scanMessage">Scan Message</p>
+
+    <button class="btn btn-info" data-action="click->nfc#scanNewNfc">Scan NFC</button>
+
+    <div>
+      <button class="btn btn-primary" data-action="click->nfc#writeNewNfc">Write NFC</button>
+
+      <%= simple_form_for([@task, @nfc], data: {nfc_target: "nfcForm", turbo: false}) do |f| %>
+        <%= f.input :url %>
+        <%= f.input :serial_number %>
+        <%= f.input :position %>
+        <%= f.submit class: "btn btn-outline-success" %>
+        <%# , data: {action: "click->nfc#writeUrlToNewNfc"} %>
+      <% end %>
+    </div>
+  </div>
+</div>
