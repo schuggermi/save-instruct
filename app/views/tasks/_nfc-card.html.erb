@@ -1,0 +1,6 @@
+<li class="card p-2">
+  <p>Position: <%= nfc.position %></p>
+  <p>Serial number: <%= nfc.serial_number %></p>
+  <p>Created: <%= nfc.created_at %></p>
+  <%= link_to 'Remove from Task', task_nfc_path(nfc.task), class: "text-danger", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+</li>
