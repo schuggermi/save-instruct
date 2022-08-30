@@ -1,7 +1,10 @@
 <h1>Add a New Task</h1>
-
 <%= simple_form_for(@task) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
+  <h1>Add a New Step</h1>
+  <%= f.simple_fields_for :steps, @task.steps do |t| %>
+    <%= render "step", s: t, template: false %>
+  <% end %>
   <%= f.submit %>
 <% end %>
