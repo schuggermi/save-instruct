@@ -1,5 +1,6 @@
 class NfcsController < ApplicationController
   before_action :set_task, only: [:new, :create]
+  before_action :set_nfc, only: :destroy
 
   def new
     @nfc = Nfc.new
@@ -15,6 +16,11 @@ class NfcsController < ApplicationController
     end
   end
 
+  def destroy
+    @nfc.destroy
+    redirect_to task_path(@nfc.task), status: :see_other
+  end
+
   private
 
   def nfc_params
@@ -23,5 +29,9 @@ class NfcsController < ApplicationController
 
   def set_task
     @task = Task.find(params[:task_id])
+  end
+
+  def set_nfc
+    @nfc = Nfc.find(params[:id])
   end
 end

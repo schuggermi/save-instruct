@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="nfc"
 export default class extends Controller {
-  static targets = [ 'scanMessage', 'textToWrite', 'nfcForm' ]
+  static targets = [ 'scanMessage', 'textToWrite', 'nfcForm', 'write' ]
   static values = {
     task: String
   }
@@ -23,8 +23,13 @@ export default class extends Controller {
         };
 
         ndef.onreading = (event) => {
-          this.nfcFormTarget[2].value = event.serialNumber
-          this.nfcFormTarget[1].value = `${window.location.origin}/tasks/${this.taskValue}`
+          const serialNumber = event.serialNumber;
+          const url = `${this.nfcFormTarget.action}?serial_number=${serialNumber}`;
+
+          this.nfcFormTarget[2].value = event.serialNumber;
+          this.nfcFormTarget[1].value = `${window.location.origin}/tasks/${this.taskValue}`;
+          this.scanMessageTarget.innerText = "Scan the NFC was successfully completed.";
+          this.writeTarget.classList.remove("d-none");
         }
       } catch (error) {
         this.scanMessageTarget.innerText = `Error! Scan failed to start: ${error}.`;
