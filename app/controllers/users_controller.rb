@@ -1,4 +1,4 @@
-class EmployeesController < ApplicationController
+class UsersController < ApplicationController
   # before_action :authorize_user
   # in theory any of the actions associated with this controller will only be
   # available to the manager, it will only go through the managers journey so
@@ -9,12 +9,12 @@ class EmployeesController < ApplicationController
   end
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def delete
     User.find(params[:id]).destroy
-    redirect_to_users_path, status: :see_other
+    # redirect_to_users_path, status: :see_other
   end
 
   # def create
