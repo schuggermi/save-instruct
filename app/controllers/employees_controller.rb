@@ -17,13 +17,15 @@ class EmployeesController < ApplicationController
     redirect_to_users_path, status: :see_other
   end
 
-  def create
-    @user = User.new(user_params)
-  end
+  # def create
+  #   @user = User.new(user_params)
+  # end
 
-  def user_params
+  # private
 
-    params.require(:user)
-  end
+  # def user_params
+
+  #   params.require(:user).permit(:first_name, :last_name, :rank, :username, :email)
+  # end
 
 end
