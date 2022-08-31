@@ -7,7 +7,7 @@
   <div>
     <h3 class="fw-bold">Instruction Steps</h3>
     <% @task.steps.each do |step| %>
-      <%= render 'step-card', step: step %>
+      <%= render 'steps/show', step: step %>
     <% end %>
     <%# TODO - Need to implements the steps %>
   </div>
