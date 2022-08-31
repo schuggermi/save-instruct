@@ -5,5 +5,9 @@
     <%= link_to 'All tasks', tasks_path, class: "btn btn-outline-info" %>
   </div>
 
-  <%= render 'task-show-card', task: @task %>
+  <% if current_user.admin? %>
+    <%= render 'task-show-card-manager', task: @task %>
+  <% else %>
+    <%= render 'task-show-card-employee', task: @task %>
+  <% end %>
 </div>

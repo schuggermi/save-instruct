@@ -1,0 +1,31 @@
+<div class="card p-2">
+  <div>
+    <h3 class="fw-bold">Description</h3>
+    <p><%= task.description %></p>
+  </div>
+
+  <div>
+    <h3 class="fw-bold">Instruction Steps</h3>
+    <% @task.steps.each do |step| %>
+      <%= render 'step-card', step: step %>
+    <% end %>
+    <%# TODO - Need to implements the steps %>
+  </div>
+
+  <div>
+    <h3 class="fw-bold">Assigned NFC Chips</h3>
+    <ul>
+      <% @task.nfcs.each do |nfc| %>
+        <%= render 'nfc-card', nfc: nfc, task: @task %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div data-controller="mark-done">
+    <div data-mark-done-target="button">
+      <a href="/tasks/<%= @task.id %>/employee_tasks/<%= @my_employee_tasks.first.id %>" data-id="<%= @task.id %>" class="btn btn-info" data-action="click->mark-done#update">Mark as done</a>
+    </div>
+  </div>
+  
+</div>
+
