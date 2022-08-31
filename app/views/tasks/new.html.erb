@@ -4,12 +4,6 @@
   <%= f.input :name %>
   <%= f.input :description %>
 
-  <div class="mb-3 string optional task_name">
-    <% @task.steps.each do |task| %>
-    <%= @task.steps %>
-    <% end %>
-  </div>
-
   <h1>Add a New Step</h1>
       <%= f.simple_fields_for :steps, @task.steps do |t| %>
       <%= render "step", s: t, template: false %>
