@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :employee_task, dependent: :destroy
+
+  def admin?
+    self.admin == true
+  end
 end
