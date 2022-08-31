@@ -3,6 +3,12 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+import NestedForm from 'stimulus-rails-nested-form'
+
+application.register('nested-form', NestedForm)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import NfcController from "./nfc_controller"
+application.register("nfc", NfcController)
