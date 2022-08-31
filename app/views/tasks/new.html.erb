@@ -3,14 +3,15 @@
 
   <%= f.input :name %>
   <%= f.input :description %>
+
   <h1>Add a New Step</h1>
       <%= f.simple_fields_for :steps, @task.steps do |t| %>
-      <%= render "step", s: t, template: false %>
+      <%= render "steps/new", s: t, template: false %>
     <% end %>
 
   <template data-nested-form-target="template">
     <%= f.simple_fields_for :steps, Step.new, child_index: 'NEW_RECORD' do |t| %>
-      <%= render "step", s: t %>
+      <%= render "steps/new", s: t %>
     <% end %>
   </template>
   <div data-nested-form-target="target"></div>

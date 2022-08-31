@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
 
   devise_for :users
+=======
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+>>>>>>> f6006f849eeaf3424a0f0140503cdec9c6a85ede
   root to: "pages#dashboard"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
