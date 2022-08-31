@@ -6,9 +6,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :require_no_authentication, only: [:new, :create]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    if current_user && current_user.admin?
+      super
+    else
+      redirect_to root_path
+    end
+  end
 
   # POST /resource
   def create
