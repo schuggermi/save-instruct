@@ -1,11 +1,11 @@
 class EmployeeTasksController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
   def update
     @employee_task = EmployeeTask.find(params[:id])
-    @employee_task.update(task_done: true)
+    @employee_task.update(task_done: DateTime.now)
 
-    head :ok
-    
+    respond_to do |format|
+      format.html { redirect_to task_path(@employee_task.task_id) }
+      format.text { render partial: "tasks/done_task", locals: { employee_task: @employee_task }, formats: [:html] }
+    end
   end
 end
