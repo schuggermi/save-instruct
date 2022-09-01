@@ -1,3 +1,7 @@
+cloudinary:
+  service: Cloudinary
+  folder: <%= Rails.env %> # IS THIS CONVENTION OR DO I HAVE TO CHANGE THIS?
+
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>

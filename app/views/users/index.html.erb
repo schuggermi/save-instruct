@@ -16,11 +16,11 @@
 
   <% @users.each do |user| %>
     <%= render "employee_card", user: user %>
+    <% end %>
+
   <% end %>
 </div>
-  <%= cl_image_tag("cgbefenauz6vioznhag5",
-      width: 400, height: 300, crop: :fill) %>
-<% end %>
+
 
 <%# here i should create a PARTIAL for employee card %>
 <%# INDEX is an action available only for managers, that means once, the invitable is ready i have to create
