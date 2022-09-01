@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :employee_task, dependent: :destroy
 
+  has_one_attached :photo
+
   def admin?
     self.admin == true
   end
