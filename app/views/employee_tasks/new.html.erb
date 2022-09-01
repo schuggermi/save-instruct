@@ -1,0 +1,15 @@
+<div class="container">
+    <%= simple_form_for [@task, @employee_task] do |f| %>
+      <ul>
+        <% @employees.each do |employee| %>
+          <li>
+            <%# <%= f.hidden_field :user_ids, { multiple: true, value: '' } %>
+            <%= check_box_tag "user_ids[]", employee.id, @task.employee_tasks.map { |et| et.user.id }.include?(employee.id) %>
+            <%= employee.first_name %> <%= employee.last_name %>
+            <%# @task.employee_tasks.map { |et| et.user.id }.include?(employee.id) %>
+          </li>
+        <% end %>
+      </ul>
+      <%= f.submit "Done" %>
+    <% end %>
+</div>
