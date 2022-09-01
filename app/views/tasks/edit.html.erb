@@ -1,0 +1,7 @@
+<%= simple_form_for @task do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>
+
+<%= button_to "Delete task", @task, method: :delete, class: "btn btn-danger mt-2" %>
