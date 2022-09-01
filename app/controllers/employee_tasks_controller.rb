@@ -28,6 +28,16 @@ class EmployeeTasksController < ApplicationController
     end
   end
 
+  def update
+    @employee_task = EmployeeTask.find(params[:id])
+    @employee_task.update(task_done: DateTime.now)
+
+    respond_to do |format|
+      format.html { redirect_to task_path(@employee_task.task_id) }
+      format.text { render partial: "tasks/done_task", locals: { employee_task: @employee_task }, formats: [:html] }
+    end
+  end
+
   private
 
   def employee_task_params
@@ -37,4 +47,5 @@ class EmployeeTasksController < ApplicationController
   def set_task
     @task = Task.find(params[:task_id])
   end
+  
 end

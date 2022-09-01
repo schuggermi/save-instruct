@@ -1,0 +1,29 @@
+<head>
+</head>
+<body>
+<div class="employee_card d-flex justify-content-between" >
+
+  <div class="employee_avatar">
+    <%=image_tag "smallbulut"%>
+  </div>
+
+  <div class="employee_name">
+    <%= user.first_name %>
+    <%= user.last_name %>
+  </div>
+
+  <div class="employee icon">
+    <img src="icon">
+  </div>
+
+</div>
+</body>
+
+<%# SO... QUESTIONS
+1 DOES IT MAKE SENCE TO USE GRID INSTEAD OF FLEXBOX
+2 HOW CAN I INTEGRATE IN THE PARTIAL ANOTHER PARTIAL %>
+
+<%# has an avatar to the left %>
+<%# has the full name in the middle %>
+<%# has an icon to the right %>
+<%# <%= image_tag user.avatar.key, class: "card", alt:"User Avatar"%>

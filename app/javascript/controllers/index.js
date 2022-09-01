@@ -13,5 +13,14 @@ application.register("employee", EmployeeController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MarkDoneController from "./mark_done_controller"
+application.register("mark-done", MarkDoneController)
+
 import NfcController from "./nfc_controller"
 application.register("nfc", NfcController)
+
+import NestedForm from 'stimulus-rails-nested-form'
+application.register('nested-form', NestedForm)
+
+import Sortable from 'stimulus-sortable'
+application.register('sortable', Sortable)
