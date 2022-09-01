@@ -1,0 +1,26 @@
+<%# here i have to conect the search icon to activate the search and take me to the employees profile %>
+<%# create a div that contains all the cards %>
+<%# after employees and the search icon, i have to display all of the cards of all the employees%>
+<%# make sure all of them are there by using the index method, perhaps also count%>
+<%# the CARD must contain an avatar, the employees full name and a link to his/her profile, make the last one a button %>
+<%# all the cards have the same blue color, the background will be white and an orange navbar %>
+<%# finally we need a function to scroll down, since there wont be enough space for all employees in one screen alone %>
+<%# also remember 360x640 for Android and 375x667 for iOS %>
+
+<% if @users.all.count > 0 %>
+
+<div class="container-fluid">
+  <div>
+    <h1 class="text-center">Employees</h1>
+  </div>
+
+  <% @users.each do |user| %>
+    <%= render "employee_card", user: user %>
+  <% end %>
+</div>
+
+<% end %>
+
+<%# here i should create a PARTIAL for employee card %>
+<%# INDEX is an action available only for managers, that means once, the invitable is ready i have to create
+a validation method base on user.rank %>
