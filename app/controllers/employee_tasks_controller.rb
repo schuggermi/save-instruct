@@ -7,25 +7,31 @@ class EmployeeTasksController < ApplicationController
   end
 
   def create
+    @employee_tasks = EmployeeTask.where(task: @task)
+    @employee_tasks_user_ids = []
+    @user_ids = params[:user_ids]
+
     if params[:user_ids].blank?
       EmployeeTask.where(task: @task).destroy_all
-    else
-      params[:user_ids].each do |user|
-        e_task = EmployeeTask.find_by(user: user.to_i)
-        if e_task.blank?
-          @employee_task = EmployeeTask.new
-          @employee_task.task = @task
-          @employee_task.user = User.find(user)
-          if @employee_task.save
-            redirect_to task_path(@employee_task.task)
-          else
-            render :new, status: :unprocessable_entity
-          end
-        else
-
-        end
-      end
+      redirect_to task_path(@task)
+      return
     end
+
+    @employee_tasks.each do |e_task|
+      @employee_tasks_user_ids << e_task.user.id
+      @user_ids.include?(e_task.user.id) ? next : e_task.destroy
+    end
+
+    params[:user_ids].each do |user|
+      @employee_task = EmployeeTask.new
+      @employee_task.task = @task
+      @employee_task.user = User.find(user)
+      next if @employee_task.save
+
+      render :new, status: :unprocessable_entity
+    end
+
+    redirect_to task_path(@employee_task.task)
   end
 
   def update
@@ -47,5 +53,5 @@ class EmployeeTasksController < ApplicationController
   def set_task
     @task = Task.find(params[:task_id])
   end
-  
+
 end

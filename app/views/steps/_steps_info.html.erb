@@ -1,5 +1,4 @@
-<div data-edit-step-target="infos">
-  <p class="step-instruction"><%= step.instruction %></p>
-  <p class="text-info"> <%= step.info %></p>
-  <button type="button" data-action="click->edit-step#display">Edit Step</button>
+<div class="px-3" style="line-height: 0.8" data-edit-step-target="infos">
+  <p class="d-flex justify-content-between"><%= step.order %>. <%= step.instruction %> <%= fa_icon ["pencil", "1x"], data: { action: "click->edit-step#display" }, class: "text-danger" %></p>
+  <p class="text-warning"><%= step.info %></p>
 </div>

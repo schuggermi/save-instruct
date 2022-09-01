@@ -7,41 +7,51 @@
 <div class="card p-2">
   <div>
     <h3 class="fw-bold">Description</h3>
-    <p><%= task.description %></p>
+    <p class="ps-3 text-gray">"<%= task.description %>"</p>
   </div>
 
-  <div>
-    <ul data-controller="sortable" data-sortable-animation-value="150">
-    <h3 class="fw-bold">Instruction Steps</h3>
+  <div class="my-4">
+    <ul class="my-4" data-controller="sortable" data-sortable-animation-value="150">
+    <h3 class="fw-bold">Instructions</h3>
       <% @task.steps.each do |step| %>
-      <li><%= render 'steps/show', step: step %></li>
-    <% end %>
+        <li><%= render 'steps/show', step: step %></li>
+      <% end %>
     </ul>
-    <%# TODO - Need to implements the steps %>
   </div>
 
-  <div>
-    <h3 class="fw-bold">Assigned NFC Chips</h3>
-    <ul>
+  <div class="my-4">
+    <h3 class="fw-bold">NFC Chips</h3>
+    <ul class="my-4">
       <% @task.nfcs.each do |nfc| %>
         <%= render 'nfc-card', nfc: nfc, task: @task %>
       <% end %>
     </ul>
+    <%= link_to 'Add NFC Chip', new_task_nfc_path(task), class: "btn btn-info w-100" %>
   </div>
 
-  <div>
+  <div class="my-4">
     <h3 class="fw-bold">Assigned Employees</h3>
-    <%# TODO - Need to implements the steps %>
-    <ul>
-      <% @employee_tasks.each do |employee_task| %>
-        <li><%= employee_task.user.first_name %> <%= employee_task.user.last_name %></li>
-      <% end %>
-    </ul>
+    <ul class="list-style-none my-4 px-3">
+        <% @employee_tasks.each_with_index do |employee_task, index| %>
+          <% if index > 0 && index < @employee_tasks.count %>
+            <hr>
+          <% end %>
+          <li class="d-flex flex-row justify-content-start my-2">
+            <div>
+              <% if employee_task.user.photo.attached? %>
+                <%= cl_image_tag employee_task.user.photo.key, height: 40, width: 40, crop: :fill, class: "rounded-circle" %>
+              <% else %>
+                <%= image_tag "bee logo 2", height: 40, width: 40, class: "rounded-circle" %>
+              <% end %>
+              <%= employee_task.user.first_name %> <%= employee_task.user.last_name %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to 'Add/Remove employee', new_task_employee_task_path(task), class: "btn btn-info w-100" %>
   </div>
 
   <div>
     <%= link_to 'Edit task', edit_task_path(task), class: "btn btn-info" %>
-    <%= link_to 'Add/Remove employee', new_task_employee_task_path(task), class: "btn btn-info" %>
-    <%= link_to 'Add NFC Chip', new_task_nfc_path(task), class: "btn btn-info" %>
   </div>
 </div>
