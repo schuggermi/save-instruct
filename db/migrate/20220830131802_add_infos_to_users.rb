@@ -3,6 +3,6 @@ class AddInfosToUsers < ActiveRecord::Migration[7.0]
     add_column :users, :first_name, :string
     add_column :users, :last_name, :string
     add_column :users, :rank, :string
-    add_column :users, :admin, :boolean
+    add_column :users, :admin, :boolean, default: false
   end
 end

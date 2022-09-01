@@ -1,3 +1,9 @@
+<style>
+  ul {
+   list-style-type: none;
+  }
+</style>
+
 <div class="card p-2">
   <div>
     <h3 class="fw-bold">Description</h3>
@@ -5,10 +11,12 @@
   </div>
 
   <div>
+    <ul data-controller="sortable" data-sortable-animation-value="150">
     <h3 class="fw-bold">Instruction Steps</h3>
-    <% @task.steps.each do |step| %>
-      <%= render 'step-card', step: step %>
+      <% @task.steps.each do |step| %>
+      <li><%= render 'steps/show', step: step %></li>
     <% end %>
+    </ul>
     <%# TODO - Need to implements the steps %>
   </div>
 
