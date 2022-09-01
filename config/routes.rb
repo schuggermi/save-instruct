@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
 
   devise_for :users
 
+=======
+>>>>>>> master
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
