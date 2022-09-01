@@ -10,6 +10,9 @@ application.register("edit-step", EditStepController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MarkDoneController from "./mark_done_controller"
+application.register("mark-done", MarkDoneController)
+
 import NfcController from "./nfc_controller"
 application.register("nfc", NfcController)
 

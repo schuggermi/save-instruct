@@ -1,0 +1,50 @@
+<div class="card p-2">
+  <div>
+    <h3 class="fw-bold">Description</h3>
+    <p><%= task.description %></p>
+  </div>
+
+  <div>
+    <h3 class="fw-bold">Instruction Steps</h3>
+    <% @task.steps.each do |step| %>
+      <%= render 'step-card', step: step %>
+    <% end %>
+    <%# TODO - Need to implements the steps %>
+  </div>
+
+  <div>
+    <h3 class="fw-bold">Assigned NFC Chips</h3>
+    <ul>
+      <% @task.nfcs.each do |nfc| %>
+        <%= render 'nfc-card', nfc: nfc, task: @task %>
+      <% end %>
+    </ul>
+  </div>
+
+
+  <% if @my_employee_tasks.first.task_done? && @my_employee_tasks.first.task_done.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d") %>
+
+    <%= render 'done_task', employee_task: @employee_tasks.first %>
+
+  <% else %>
+
+    <div data-controller="mark-done">
+
+      <%= simple_form_for @task,
+      url: "/tasks/#{@task.id}/employee_tasks/#{@my_employee_tasks.first.id}",
+      html: {
+        data: {
+          mark_done_target: "form",
+          action: "submit->mark-done#update"
+        }
+      } do |f|
+      %>
+        <%= f.submit "Mark as done", class: "btn btn-info" %>
+      <% end %>
+
+    </div>
+
+  <% end %>
+
+</div>
+
