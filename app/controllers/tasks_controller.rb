@@ -19,6 +19,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
+      order_steps(@task.steps)
       redirect_to tasks_path
     else
       render :new, status: :unprocessable_entity
@@ -42,6 +43,14 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def order_steps(task_steps)
+    order = 1
+    task_steps.ids.sort.each do |step_id|
+      Step.find(step_id).update(order: order)
+      order += 1
+    end
+  end
 
   def task_params
     params.require(:task).permit(:name, :description, steps_attributes: %i[instruction info id _destroy order])
