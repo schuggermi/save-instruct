@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :nfcs, only: [:index, :new, :create, :destroy]
     resources :steps, only: [:create, :update, :destroy]
-    resources :employee_tasks, only: [:index, :new, :create, :destroy]
+    resources :employee_tasks, only: [:index, :new, :create, :destroy, :update]
   end
 
   # Defines the root path route ("/")

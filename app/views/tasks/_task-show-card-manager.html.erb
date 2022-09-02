@@ -1,0 +1,57 @@
+<style>
+  ul {
+   list-style-type: none;
+  }
+</style>
+
+<div class="card p-2">
+  <div>
+    <h3 class="fw-bold">Description</h3>
+    <p class="ps-3 text-gray">"<%= task.description %>"</p>
+  </div>
+
+  <div class="my-4">
+    <ul class="my-4" data-controller="sortable" data-sortable-animation-value="150">
+    <h3 class="fw-bold">Instructions</h3>
+      <% @task.steps.each do |step| %>
+        <li><%= render 'steps/show', step: step %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="my-4">
+    <h3 class="fw-bold">NFC Chips</h3>
+    <ul class="my-4">
+      <% @task.nfcs.each do |nfc| %>
+        <%= render 'nfc-card', nfc: nfc, task: @task %>
+      <% end %>
+    </ul>
+    <%= link_to 'Add NFC Chip', new_task_nfc_path(task), class: "btn btn-info w-100" %>
+  </div>
+
+  <div class="my-4">
+    <h3 class="fw-bold">Assigned Employees</h3>
+    <ul class="list-style-none my-4 px-3">
+        <% @employee_tasks.each_with_index do |employee_task, index| %>
+          <% if index > 0 && index < @employee_tasks.count %>
+            <hr>
+          <% end %>
+          <li class="d-flex flex-row justify-content-start my-2">
+            <div>
+              <% if employee_task.user.photo.attached? %>
+                <%= cl_image_tag employee_task.user.photo.key, height: 40, width: 40, crop: :fill, class: "rounded-circle" %>
+              <% else %>
+                <%= image_tag "bee", height: 40, width: 40, class: "rounded-circle" %>
+              <% end %>
+              <%= employee_task.user.first_name %> <%= employee_task.user.last_name %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to 'Add/Remove employee', new_task_employee_task_path(task), class: "btn btn-info w-100" %>
+  </div>
+
+  <div>
+    <%= link_to 'Edit task', edit_task_path(task), class: "btn btn-info" %>
+  </div>
+</div>

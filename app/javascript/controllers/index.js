@@ -7,11 +7,23 @@ import { application } from "./application"
 import EditStepController from "./edit_step_controller"
 application.register("edit-step", EditStepController)
 
+import EmployeeController from "./employee_controller"
+application.register("employee", EmployeeController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MarkDoneController from "./mark_done_controller"
+application.register("mark-done", MarkDoneController)
 
 import NfcController from "./nfc_controller"
 application.register("nfc", NfcController)
 
 import NestedForm from 'stimulus-rails-nested-form'
 application.register('nested-form', NestedForm)
+
+import Sortable from 'stimulus-sortable'
+application.register('sortable', Sortable)
+
+import OrderByDragController from "./order_by_drag_controller"
+application.register("order-by-drag", OrderByDragController)

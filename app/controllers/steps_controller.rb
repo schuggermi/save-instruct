@@ -23,6 +23,6 @@ class StepsController < ApplicationController
   private
 
   def step_params
-    params.require(:step).permit(:instruction, :info)
+    params.require(:step).permit(:instruction, :info, :position, :order)
   end
 end

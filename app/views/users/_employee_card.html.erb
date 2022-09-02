@@ -5,7 +5,7 @@
       <% if user.photo.attached? %>
         <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill %>
       <% else %>
-        <%= image_tag "bee logo 2", height: 120, width: 120 %>
+        <%= image_tag "bee", height: 120, width: 120 %>
       <% end %>
     </div>
 

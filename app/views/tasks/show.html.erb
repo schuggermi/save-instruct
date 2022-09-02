@@ -1,9 +1,13 @@
 <div class="container-fluid">
-  <h1 class="text-center"><%= @task.name %></h1>
+  <h1 class="text-center fw-bold"><%= @task.name %></h1>
 
-  <div>
+  <div class="my-4">
     <%= link_to 'All tasks', tasks_path, class: "btn btn-outline-info" %>
   </div>
 
-  <%= render 'task-show-card', task: @task %>
+  <% if current_user.admin? %>
+    <%= render 'task-show-card-manager', task: @task %>
+  <% else %>
+    <%= render 'task-show-card-employee', task: @task %>
+  <% end %>
 </div>
