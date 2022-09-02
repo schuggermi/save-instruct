@@ -7,20 +7,9 @@
   <div>
     <h3 class="fw-bold">Instruction Steps</h3>
     <% @task.steps.each do |step| %>
-      <%= render 'step-card', step: step %>
+      <%= render 'steps/steps_info', step: step %>
     <% end %>
-    <%# TODO - Need to implements the steps %>
   </div>
-
-  <div>
-    <h3 class="fw-bold">Assigned NFC Chips</h3>
-    <ul>
-      <% @task.nfcs.each do |nfc| %>
-        <%= render 'nfc-card', nfc: nfc, task: @task %>
-      <% end %>
-    </ul>
-  </div>
-
 
   <% if @my_employee_tasks.first.task_done? && @my_employee_tasks.first.task_done.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d") %>
 
@@ -47,4 +36,3 @@
   <% end %>
 
 </div>
-

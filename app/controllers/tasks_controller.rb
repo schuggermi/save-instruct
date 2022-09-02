@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show destroy edit update]
 
   def index
-    @tasks = Task.all
+    if current_user.admin?
+      @tasks = Task.all
+    else
+      @employee_tasks = EmployeeTask.where(user_id: current_user.id)
+    end
   end
 
   def show

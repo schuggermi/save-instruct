@@ -3,7 +3,14 @@
     <h1 class="text-center">Tasks</h1>
   </div>
 
-  <% @tasks.each do |task| %>
-    <%= render "task-card", task: task %>
+
+  <% if current_user.admin? %>
+    <% @tasks.each do |task| %>
+      <%= render "task-card", task: task %>
+    <% end %>
+  <% else %>
+    <% @employee_tasks.each do |e_task| %>
+      <%= render "task-card", task: e_task.task %>
+    <% end %>
   <% end %>
 </div>
