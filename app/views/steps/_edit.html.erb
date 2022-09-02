@@ -1,5 +1,6 @@
 <%= simple_form_for [task, step], html: { class:"d-none", data: { edit_step_target: "form", action: "submit->edit-step#update" } } do |f| %>
   <%= f.input :instruction %>
   <%= f.input :info %>
+  <%= f.input :order %>
   <%= f.submit %>
   <% end %>
