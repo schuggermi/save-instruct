@@ -41,7 +41,7 @@
               <% if employee_task.user.photo.attached? %>
                 <%= cl_image_tag employee_task.user.photo.key, height: 40, width: 40, crop: :fill, class: "rounded-circle" %>
               <% else %>
-                <%= image_tag "bee logo 2", height: 40, width: 40, class: "rounded-circle" %>
+                <%= image_tag "bee", height: 40, width: 40, class: "rounded-circle" %>
               <% end %>
               <%= employee_task.user.first_name %> <%= employee_task.user.last_name %>
             </div>
