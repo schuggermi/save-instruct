@@ -1,29 +1,25 @@
-<head>
-</head>
-<body>
-<div class="employee_card d-flex justify-content-between" >
+<%= link_to employee_path(user) do %>
+  <div class="employee_card d-flex justify-content-between">
 
-  <div class="employee_avatar">
-    <% if user.photo.attached? %>
-      <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill %>
+    <div class="employee_avatar">
+      <% if user.photo.attached? %>
+        <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill %>
       <% else %>
         <%= image_tag "bee", height: 120, width: 120 %>
       <% end %>
-      <%# <%= cl_image_tag("cgbefenauz6vioznhag5",
-      width: 120, height: 120, crop: :fill) %>
-      </div>
+    </div>
 
-  <div class="employee_name">
-    <%= user.first_name %>
-    <%= user.last_name %>
+    <div class="employee_name">
+      <p><%= user.first_name %></p>
+      <p><%= user.last_name %></p>
+    </div>
+
+    <%# <div class="employee icon">
+      <%= image_tag "icon index users", height: 80, width: 80 %>
+    <%# </div> %>
+
   </div>
-
-  <div class="employee icon">
-    <img src="icon">
-  </div>
-
-</div>
-</body>
+<% end %>
 
 <%# SO... QUESTIONS
 1 DOES IT MAKE SENCE TO USE GRID INSTEAD OF FLEXBOX
