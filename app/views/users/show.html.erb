@@ -1,6 +1,10 @@
+<div>
+  <%= link_to 'All Employees', employees_path, class: "btn btn-outline-info"%>
+  </div>
+
 <div class="container-fluid">
 
-  <h1 class="text-center"><%= @task.name %></h1>
+  <h1 class="text-center"><div>${first_name + last_name}</div><%= @user.name %></h1>
 
   <div>
     <%= link_to 'All tasks', tasks_path, class: "btn btn-outline-info" %>
