@@ -32,13 +32,15 @@
 
 .navbar-lewagon .nav-item.dropdown {
   list-style: none;
-  text-align: end;
+  text-align: right;
   margin: 0;
 }
 
 .navbar-lewagon .nav-item.dropdown li {
   padding: 5px;
-  width: 0px;
+}
+.navbar-lewagon .nav-item.dropdown li a {
+  display: inline;
 }
 
 .navbar-toggler,
