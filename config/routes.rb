@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get "employees", to: "users#index"
+  get "employees/:id", to: "users#show", as: :employee
 end
