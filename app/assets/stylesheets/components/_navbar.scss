@@ -1,8 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
+  padding: 5px 0;
   align-items: center;
   background: $orange;
-  padding: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,6 +10,34 @@
 }
 
 .navbar-lewagon .navbar-brand img {
+  width: 33px;
+}
+
+.navbar-lewagon .navbar-toggler{
+  border: none;
+}
+
+.navbar-lewagon .navbar-toggler i {
+  color: #000000;
+  font-size: 34px;
+}
+
+.navbar-toggler-icon {
+  background-size: 110%;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-lewagon .nav-item.dropdown {
+  list-style: none;
+  text-align: end;
+  margin: 0;
+}
+
+.navbar-lewagon .nav-item.dropdown li {
+  padding: 5px;
   width: 0px;
 }
 
