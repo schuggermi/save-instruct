@@ -1,0 +1,10 @@
+<div class="container-fluid">
+
+  <h1 class="text-center"><%= @task.name %></h1>
+
+  <div>
+    <%= link_to 'All tasks', tasks_path, class: "btn btn-outline-info" %>
+  </div>
+
+  <%= render 'task-show-card', task: @task %>
+</div>

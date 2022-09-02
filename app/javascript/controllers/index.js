@@ -7,8 +7,14 @@ import { application } from "./application"
 import EditStepController from "./edit_step_controller"
 application.register("edit-step", EditStepController)
 
+import EmployeeController from "./employee_controller"
+application.register("employee", EmployeeController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MarkDoneController from "./mark_done_controller"
+application.register("mark-done", MarkDoneController)
 
 import NfcController from "./nfc_controller"
 application.register("nfc", NfcController)

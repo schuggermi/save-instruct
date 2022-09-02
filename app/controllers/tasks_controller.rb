@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[show destroy]
+  before_action :set_task, only: %i[show destroy edit update]
 
   def index
     @tasks = Task.all
@@ -7,6 +7,8 @@ class TasksController < ApplicationController
 
   def show
     @employee_tasks = @task.employee_tasks
+
+    @my_employee_tasks = @employee_tasks.where(user_id: current_user.id)
   end
 
   def new
@@ -20,6 +22,17 @@ class TasksController < ApplicationController
       redirect_to tasks_path
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @task.update(task_params)
+      redirect_to @task, notice: "Task was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
