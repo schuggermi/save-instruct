@@ -1,14 +1,18 @@
-<h1>Save Instruct Dashboard Manager</h1>
+<h1>Dashboard</h1>
 <%# TODO : Change the view for Manager and Employee %>
 
 <% if current_user.admin? %>
-  <%= button_to "Add Task", new_task_path, :id => "new-task-btn",
-      :class => "btn btn-success", :method => :get %>
-  <%= link_to "Create employee", new_user_registration_path, class: "btn btn-primary" %>
-  <%= link_to "Employees List", employees_path, class: "btn btn-dark" %>
-  <%= link_to "Tasks", tasks_path, class: "btn btn-info" %>
+
+  <%= link_to "Add Task", new_task_path, class: "button button-outline-orange" %>
+
+  <%= link_to "Tasks", tasks_path, class: "button button-outline-orange" %>
+
+  <%= link_to "Create employee", new_user_registration_path, class: "button button-outline-orange" %>
+
+  <%= link_to "Employees List", employees_path, class: "button button-outline-orange" %>
+
 <% else %>
-  <%= link_to "Tasks", tasks_path, class: "btn btn-info" %>
+  <% controller.redirect_to tasks_path %>
 <% end %>
 
 <div class="container-fluid text-center">

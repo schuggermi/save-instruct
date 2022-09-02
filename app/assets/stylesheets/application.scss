@@ -17,6 +17,13 @@ ul {
 
 h1 {
   padding: 20px 0 10px 0;
+  font-family: $headers-font;
+  font-weight: bold;
+  font-size: 33px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #000000;
+  text-transform: uppercase;
 }
 
 hr {
