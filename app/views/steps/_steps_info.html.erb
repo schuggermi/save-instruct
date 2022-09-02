@@ -1,4 +1,8 @@
 <div class="px-3" style="line-height: 0.8" data-edit-step-target="infos">
-  <p class="d-flex justify-content-between"><%= step.order %>. <%= step.instruction %> <%= fa_icon ["pencil", "1x"], data: { action: "click->edit-step#display" }, class: "text-danger" %></p>
+  <% if current_user.admin? %>
+    <p class="d-flex justify-content-between"><%= step.order %>. <%= step.instruction %> <%= fa_icon ["pencil", "1x"], data: { action: "click->edit-step#display" }, class: "text-danger" %></p>
+  <% else %>
+    <p class="d-flex justify-content-between"><%= step.order %>. <%= step.instruction %></p>
+  <% end %>
   <p class="text-warning"><%= step.info %></p>
 </div>
