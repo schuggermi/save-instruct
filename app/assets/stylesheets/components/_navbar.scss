@@ -1,7 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgb(244,153,24);
   padding: 5px 0;
+  align-items: center;
+  background: $orange;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -37,4 +38,12 @@
 
 .navbar-lewagon .nav-item.dropdown li {
   padding: 5px;
+  width: 0px;
+}
+
+.navbar-toggler,
+.navbar-toggler:active,
+.navbar-toggler:focus {
+   outline: 0;
+   border: 0;
 }

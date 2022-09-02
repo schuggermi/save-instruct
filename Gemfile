@@ -52,7 +52,9 @@ gem "devise"
 # gem "image_processing", "~> 1.2"
 
 gem "autoprefixer-rails"
+# Font Awesome
 gem "font-awesome-sass", "~> 6.1"
+gem "font-awesome-rails"
 gem "simple_form", github: "heartcombo/simple_form"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -78,3 +80,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "cloudinary"

@@ -4,8 +4,14 @@
 <div class="employee_card d-flex justify-content-between" >
 
   <div class="employee_avatar">
-    <%=image_tag "smallbulut"%>
-  </div>
+    <% if user.photo.attached? %>
+      <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill %>
+      <% else %>
+        <%= image_tag "bee", height: 120, width: 120 %>
+      <% end %>
+      <%# <%= cl_image_tag("cgbefenauz6vioznhag5",
+      width: 120, height: 120, crop: :fill) %>
+      </div>
 
   <div class="employee_name">
     <%= user.first_name %>
