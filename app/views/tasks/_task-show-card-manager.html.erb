@@ -11,8 +11,8 @@
   </div>
 
   <div class="my-4">
-    <ul class="my-4" data-controller="sortable" data-sortable-animation-value="150">
     <h3 class="fw-bold">Instructions</h3>
+    <ul class="my-4" data-controller="sortable" data-sortable-animation-value="150">
       <% @task.steps.each do |step| %>
         <li><%= render 'steps/show', step: step %></li>
       <% end %>
