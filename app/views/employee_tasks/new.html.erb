@@ -10,7 +10,7 @@
           <li class="d-flex flex-row justify-content-between my-2">
             <div>
               <% if employee.photo.attached? %>
-                <%= cl_image_tag user.photo.key, height: 40, width: 40, crop: :fill, class: "rounded-circle" %>
+                <%= cl_image_tag employee.photo.key, height: 40, width: 40, crop: :fill, class: "rounded-circle" %>
               <% else %>
                 <%= image_tag "bee", height: 40, width: 40, class: "rounded-circle" %>
               <% end %>
