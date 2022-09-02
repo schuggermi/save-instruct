@@ -10,7 +10,7 @@
     <% if @user.photo.attached? %>
       <%= cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill %>
       <% else %>
-        <%= image_tag "bee logo 2", height: 120, width: 120 %>
+        <%= image_tag "bee", height: 120, width: 120 %>
       <% end %>
   </div>
   <div>
@@ -26,9 +26,9 @@
       <%= @user.employee_tasks.each do |employee_task| %>
         <li><%= employee_task.task.name.capitalize %></li>
       <% end %>
-  </div>
+  <%# </div>
   <%= link_to 'Edit Information', employees_path, class: "btn btn-dark"%>
-  </div>
+  <%# </div> %>
 </div>
 
 <%# 1 I need to establish all the conections between user show and user index
