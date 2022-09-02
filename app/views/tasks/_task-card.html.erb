@@ -7,7 +7,9 @@
   </div>
 
   <div>
-    <%= link_to 'Edit task', edit_task_path(task), class: "btn btn-info" %>
+    <% if current_user.admin? %>
+      <%= link_to 'Edit task', edit_task_path(task), class: "btn btn-info" %>
+    <% end %>
     <%= link_to 'More details', task_path(task), class: "btn btn-info" %>
   </div>
 </div>
