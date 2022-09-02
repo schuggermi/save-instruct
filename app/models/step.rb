@@ -5,6 +5,6 @@ class Step < ApplicationRecord
 
   def assign_order
     self.order = task.steps.last.order.nil? ? 1 : task.steps.last.order + 1
-    send(update_without_callbacks)
+    self.save(validate: false)
   end
 end

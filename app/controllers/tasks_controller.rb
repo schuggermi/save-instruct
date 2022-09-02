@@ -31,7 +31,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, steps_attributes: %i[instruction info id _destroy])
+    params.require(:task).permit(:name, :description, steps_attributes: %i[instruction info id _destroy order])
   end
 
   def set_task
