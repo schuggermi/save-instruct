@@ -7,22 +7,17 @@
 <%# finally we need a function to scroll down, since there wont be enough space for all employees in one screen alone %>
 <%# also remember 360x640 for Android and 375x667 for iOS %>
 
-<% if @users.all.count > 0 %>
-
-<div class="container-fluid">
+<div class= "container-fluid">
   <div>
     <h1 class="text-center">Employees</h1>
+    <div class= "btn btn-dark">search</div>
   </div>
 
-  <% @users.each do |user| %>
-    <%= render "employee_card", user: user %>
-    <%# <link_to> %>
+  <div>
+    <% if !@users.count.negative? %>
+      <% @users.each do |user| %>
+        <%= render "employee_card", user: user %>
+      <% end %>
     <% end %>
-
-  <% end %>
+  </div>
 </div>
-
-
-<%# here i should create a PARTIAL for employee card %>
-<%# INDEX is an action available only for managers, that means once, the invitable is ready i have to create
-a validation method base on user.rank %>
