@@ -23,8 +23,8 @@
   <h2> Tasks list </h2>
   <div>
     <ul class= "profile_task_list">
-      <%= @user.employee_tasks.each do |employee_task| %>
-        <li><%= employee_task.task.name.capitalize %></li>
+      <% @user.employee_tasks.each do |employee_task| %>
+        <%= render "tasks/task-card", task: employee_task.task %>
       <% end %>
   <%# </div>
   <%= link_to 'Edit Information', employees_path, class: "btn btn-dark"%>
