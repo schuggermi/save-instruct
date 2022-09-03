@@ -25,11 +25,21 @@
 }
 
 .button-outline-orange {
+  background-color: transparent!important;
   border: 0.23rem solid $orange;
+
+}
+
+a.button-outline-orange:hover {
+  background-color: $orange-light!important;
 }
 
 .button-outline-purple {
   border: 0.23rem solid $purple;
+}
+
+a.button-outline-purple:hover {
+  background-color: $purple-light!important;
 }
 
 .button-orange {
@@ -37,7 +47,23 @@
   border: none;
 }
 
+.button-orange:hover {
+  color: white!important;
+}
+
+a.button-orange:hover {
+  color: white!important;
+}
+
 .button-purple {
   background-color: $purple;
   border: none;
+}
+
+.button-purple:hover {
+  color: white!important;
+}
+
+a.button-purple:hover {
+  color: white!important;
 }

@@ -1,17 +1,19 @@
-<h1>Dashboard</h1>
-<%# TODO : Change the view for Manager and Employee %>
+<div class="container-fluid">
+  <h1 class="text-center my-4">Dashboard</h1>
 
-<% if current_user.admin? %>
-  <div class="container-fluid d-flex flex-column justify-content-between">
-    <%= link_to "Add Task", new_task_path, class: "button button-outline-orange" %>
+  <% if current_user.admin? %>
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-6 d-flex flex-column mb-5">
+        <%= link_to "Tasks", tasks_path, class: "button button-outline-orange" %>
+        <%= link_to "Add Task", new_task_path, class: "button button-orange" %>
+      </div>
 
-    <%= link_to "Tasks", tasks_path, class: "button button-outline-orange" %>
-
-    <%= link_to "Create employee", new_user_registration_path, class: "button button-outline-orange" %>
-
-    <%= link_to "Employees List", employees_path, class: "button button-outline-orange" %>
-  </div>
-
-<% else %>
-  <% controller.redirect_to tasks_path %>
-<% end %>
+      <div class="col-12 col-lg-6 d-flex flex-column">
+        <%= link_to "Create employee", new_user_registration_path, class: "button button-purple" %>
+        <%= link_to "Employees List", employees_path, class: "button button-outline-purple" %>
+      </div>
+    </div>
+  <% else %>
+    <% controller.redirect_to tasks_path %>
+  <% end %>
+</div>
