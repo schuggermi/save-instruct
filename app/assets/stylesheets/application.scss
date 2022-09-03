@@ -12,11 +12,11 @@
 @import "pages/index";
 
 a {
-  color: black;
+  color: black!important;
   text-decoration: none;
 
-  :active, :focus {
-    color: black;
+  :hover, :focus, :active {
+    color: black!important;
   }
 }
 

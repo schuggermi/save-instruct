@@ -4,8 +4,9 @@
   <%= link_to 'Cancel', task_path(@task), class: "button button-purple" %>
 
   <div class="card p-2 mt-5" data-controller="nfc" data-nfc-task-value="<%= @task.id %>">
-    <p data-nfc-target="scanMessage">...</p>
+    <p class="text-center my-2" data-nfc-target="scanMessage"></p>
 
+    <%# <%= button_to "Scan NFC", { nfc_target: "scan", action: "click->nfc#scanNewNfc" }, { class: "button button-orange" } %>
     <button class="button button-orange" data-nfc-target="scan" data-action="click->nfc#scanNewNfc">Scan NFC</button>
     <button class="button button-orange d-none" data-nfc-target="write" data-action="click->nfc#writeNewNfc">Write NFC</button>
 
