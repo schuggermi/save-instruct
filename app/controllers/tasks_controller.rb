@@ -3,9 +3,17 @@ class TasksController < ApplicationController
 
   def index
     if current_user.admin?
-      @tasks = Task.all
+      if params[:query].present?
+        @tasks = Task.where("name ILIKE ?", "%#{params[:query]}%")
+      else
+        @tasks = Task.all
+      end
     else
-      @employee_tasks = EmployeeTask.where(user_id: current_user.id)
+      if params[:query].present?
+        @employee_tasks = EmployeeTask.where(user_id: current_user.id)
+      else
+        @employee_tasks = EmployeeTask.where(user_id: current_user.id)
+      end
     end
   end
 
