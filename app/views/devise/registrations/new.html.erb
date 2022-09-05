@@ -1,10 +1,10 @@
-<h2>Sign up</h2>
+<h2>New employee</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
   data: {turbo: false}) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs form-signup">
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -12,6 +12,7 @@
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :rank %>
+    <%= f.input :admin, label: "Set employee as Admin" %>
     <%= f.input :photo, as: :file %>
     <%= f.input :password,
                 required: true,
@@ -23,8 +24,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Create Employee", class: "button button-orange" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%# <%# <%= render "devise/shared/links" %>
