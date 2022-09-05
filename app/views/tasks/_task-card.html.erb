@@ -1,13 +1,37 @@
-<div class="card p-2 d-flex flex-row justify-content-between align-items-center mt-5">
-  <%# TODO Implement how many employees assigned and how many steps %>
+<div class="task-card">
 
-  <div class="flex-grow-1 h-auto">
-    <div class="d-flex justify-content-between pb-4">
-      <h3 class="fw-bold"><%= task.name %></h3>
-      <%= link_to task_path(task), class: "button-badge" do %>
-        <%= fa_icon "plus" %>
+  <p class="title"><%= task.name %></p>
+
+  <p class="description"><%= task.description %></p>
+
+  <% if current_user.admin? %>
+    <% assigned_employee = 0 %>
+    <% done_task = 0 %>
+    <% task.employee_tasks.each do |employee_task| %>
+      <% assigned_employee += 1 %>
+      <% if employee_task.task_done? && employee_task.task_done.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d") %>
+        <% done_task += 1 %>
       <% end %>
-    </div>
-    <p><%= task.description %></p>
+    <% end %>
+
+    <% class_color = "" %>
+    <% if assigned_employee > 0 %>
+      <% if done_task == 0 %>
+        <% class_color = "red" %>
+      <% elsif done_task > 0 && done_task == assigned_employee%>
+        <% class_color = "green" %>
+      <% else %>
+        <% class_color = "yellow" %>
+      <% end %>
+    <% end %>
+
+    <p class="status"><span>Status:</span> <%= done_task %> out of <%= assigned_employee %> employees completed the task <span class="status-icon <%= class_color %>"></span></p>
+  <% end %>
+
+  <div>
+    <%= link_to task_path(task), class: "button button-orange" do %>
+        Go to task
+    <% end %>
   </div>
+
 </div>
