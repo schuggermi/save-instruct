@@ -1,48 +1,48 @@
-<div class="navbar navbar-expand-sm navbar-lewagon">
+
+<div class="navbar navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "isologo.png" %>
+      <%= image_tag "chemical-company-logo-black-white.svg" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       <%# <i class="fa fa-bars"></i> %>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <% if user_signed_in? && current_user.admin? %>
-
-          <ul class="nav-item dropdown">
-            <li class="nav-item">
-              <%= link_to "New task", new_task_path, class: "dropdown-item" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Tasks", tasks_path, class: "dropdown-item" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "New employee", new_user_registration_path, class: "dropdown-item" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Employees", employees_path, class: "dropdown-item" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "My profile", edit_user_registration_path, class: "dropdown-item" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </li>
-          </ul>
-        <% else %>
-          <ul class="nav-item dropdown">
-            <li class="nav-item">
-              <%= link_to "Tasks", tasks_path, class: "dropdown-item" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </li>
-          </ul>
-        <% end %>
-    </div>
   </div>
+</div>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <% if user_signed_in? && current_user.admin? %>
+
+      <ul class="nav-item dropdown">
+        <li class="nav-item">
+          <%= link_to "New task", new_task_path, class: "dropdown-item nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Tasks", tasks_path, class: "dropdown-item nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "New employee", new_user_registration_path, class: "dropdown-item nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Employees", employees_path, class: "dropdown-item nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My profile", edit_user_registration_path, class: "dropdown-item nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item nav-link" %>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="nav-item dropdown">
+        <li class="nav-item">
+          <%= link_to "Tasks", tasks_path, class: "dropdown-item nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete }, class: "dropdown-item nav-link" %>
+        </li>
+      </ul>
+    <% end %>
 </div>

@@ -1,15 +1,13 @@
-<div class="card p-2 d-flex flex-row justify-content-between align-items-center">
+<div class="card p-2 d-flex flex-row justify-content-between align-items-center mt-5">
   <%# TODO Implement how many employees assigned and how many steps %>
 
-  <div class="flex-grow-1">
-    <h3 class="fw-bold"><%= task.name %></h3>
+  <div class="flex-grow-1 h-auto">
+    <div class="d-flex justify-content-between pb-4">
+      <h3 class="fw-bold"><%= task.name %></h3>
+      <%= link_to task_path(task), class: "button-badge" do %>
+        <%= fa_icon "plus" %>
+      <% end %>
+    </div>
     <p><%= task.description %></p>
-  </div>
-
-  <div>
-    <% if current_user.admin? %>
-      <%= link_to 'Edit task', edit_task_path(task), class: "btn btn-info" %>
-    <% end %>
-    <%= link_to 'More details', task_path(task), class: "btn btn-info" %>
   </div>
 </div>

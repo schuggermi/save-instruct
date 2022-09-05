@@ -1,12 +1,13 @@
 .navbar-lewagon {
   justify-content: space-between;
-  padding: 5px 0;
   align-items: center;
   background: $orange;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-collapse {
   flex-grow: 0;
+  background-color: $orange;
+  padding: 0 10px 5px 0;
 }
 
 .navbar-lewagon .navbar-brand img {
@@ -30,17 +31,18 @@
   box-shadow: none;
 }
 
-.navbar-lewagon .nav-item.dropdown {
+.nav-item.dropdown {
   list-style: none;
   text-align: right;
   margin: 0;
 }
 
-.navbar-lewagon .nav-item.dropdown li {
+.nav-item.dropdown li {
   padding: 5px;
 }
-.navbar-lewagon .nav-item.dropdown li a {
+.nav-item.dropdown li a {
   display: inline;
+  font-weight: 700;
 }
 
 .navbar-toggler,
