@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   # authentication shant be necessary
 
   def index
+    if params[:query].present?
+      @users = User.search_employee(params[:query])
+    else
     @users = User.all
+    end
   end
 
   def show
