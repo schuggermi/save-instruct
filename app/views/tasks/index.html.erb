@@ -1,8 +1,16 @@
 <div class="container-fluid">
-  <% if current_user.admin? %>
     <div>
       <h1 class="text-center my-4">Tasks</h1>
     </div>
+
+    <%= form_with url: tasks_path, method: :get, class: "d-flex flex-column" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        placeholder: "Find a task" %>
+      <%= submit_tag "Search", class: "button button-outline-purple" %>
+    <% end %>
+
+  <% if current_user.admin? %>
     <% @tasks.each do |task| %>
       <%= render "task-card", task: task %>
     <% end %>
@@ -12,12 +20,9 @@
         <%# <%= render :template => 'devise/passwords/edit', locals: { resource: User.find(current_user.id), resource_name: "user" } %>
       <%# </div> %>
     <%# <% else %>
-      <div>
-        <h1 class="text-center my-4">Tasks</h1>
-      </div>
-      <% @employee_tasks.each do |e_task| %>
-        <%= render "task-card", task: e_task.task %>
-      <% end %>
+    <% @employee_tasks.each do |e_task| %>
+      <%= render "task-card", task: e_task.task %>
+    <% end %>
     <%# <% end %>
   <% end %>
 </div>
