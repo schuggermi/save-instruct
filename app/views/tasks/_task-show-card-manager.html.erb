@@ -12,10 +12,10 @@
 
   <div class="my-4">
     <h3 class="fw-bold">Instructions</h3>
-    <ul class="my-4" data-controller="sortable" data-sortable-animation-value="150" id="">
+    <ul class="my-4" data-controller="sortable order-by-drag" data-sortable-animation-value="150" id="">
       <% counter = 1 %>
-      <% @task.steps.each do |step| %>
-        <li><%= render 'steps/show', step: step, counter: counter %></li>
+      <% @steps.each do |step| %>
+        <li data-order-by-drag-url="<%=move_task_step_path(step.task, step)%>" data-id="<%= step.id %>"><%= render 'steps/show', step: step, counter: counter %></li>
         <% counter += 1 %>
       <% end %>
     </ul>

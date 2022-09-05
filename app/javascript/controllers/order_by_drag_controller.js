@@ -3,31 +3,17 @@ import Sortable from "sortablejs"
 
 // Connects to data-controller="order-by-drag"
 export default class extends Controller {
+static values = {url: String}
+
   connect() {
     this.Sortable = Sortable.create(this.element, {
-      onEnd: this.end.bind(this)
+      onEnd: this.updateOrder.bind(this)
     })
   };
-  end(event){
-    console.log(event);
+
+  updateOrder(event){
+    const url = event.item.dataset.orderByDragUrl
+    console.log(url)
+    fetch(url + `?new_position=${event.newIndex + 1}`)
   }
 }
-
-//   end(event) {
-//     console.log("Hello!")
-//     event.preventDefault()
-//     // let id = event.item.dataset.id;
-//     // let data = new FormData();
-//     // data.append("position", event.newIndex + 1);
-//     // Rails.ajax({
-//     //   url: this.data.get("url").replace(":id", id),
-//     //   type: "PATCH",
-//     //   data: data,
-//     // });
-//   }
-// }
-
-
-
-
-// on end
