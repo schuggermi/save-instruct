@@ -22,12 +22,12 @@ textarea.form-control {
   border-radius: 5px;
 }
 
-.form-login .form-check {
+.form-login .form-check, .form-signup .form-check{
   display: flex;
   align-items: center;
 }
 
-.form-login .form-check label {
+.form-login .form-check label, .form-signup .form-check label {
   padding-left: 10px;
 }
 
