@@ -1,14 +1,19 @@
-<div class="container-fluid">
-    <div>
-      <h1 class="text-center my-4">Tasks</h1>
+<div data-controller="search-tasks">
+    <div class="search-container" data-action="click->search-tasks#DisplaySearchForm">
+      <h1>Tasks</h1>
+      <div class="search-icon">
+        <%= image_tag "ui-icons/magnifying-glass-solid.svg" %>
+      </div>
     </div>
 
-    <%= form_with url: tasks_path, method: :get, class: "d-flex flex-column" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Find a task" %>
-      <%= submit_tag "Search", class: "button button-outline-purple" %>
-    <% end %>
+    <div data-search-tasks-target="form" class="search-form">
+       <%= form_with url: tasks_path, method: :get, class: "d-flex flex-column" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          placeholder: "Find a task" %>
+        <%= submit_tag "Search", class: "button button-outline-purple" %>
+      <% end %>
+    </div>
 
   <% if current_user.admin? %>
     <% @tasks.each do |task| %>
