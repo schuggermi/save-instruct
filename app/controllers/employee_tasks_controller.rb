@@ -3,7 +3,13 @@ class EmployeeTasksController < ApplicationController
 
   def new
     @employee_task = EmployeeTask.new
-    @employees = User.where(admin: false)
+
+    if params[:query].present?
+      sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
+      @employees = User.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @employees = User.where(admin: false)
+    end
   end
 
   def create

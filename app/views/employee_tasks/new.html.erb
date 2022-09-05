@@ -1,9 +1,18 @@
 <div class="container">
   <h1 class="text-center">Assigned Employees</h1>
+
+    <%= form_with url: new_task_employee_task_path(@task), method: :get, class: "d-flex flex-column" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        placeholder: "Find a employee" %>
+      <%= submit_tag "Search", class: "button button-outline-purple" %>
+    <% end %>
+
     <%= simple_form_for [@task, @employee_task] do |f| %>
       <%= f.submit "Done", class: "btn btn-success w-100 mt-4" %>
       <ul class="list-style-none w-75 mx-auto my-5">
         <% @employees.each_with_index do |employee, index| %>
+          <% next if employee.admin? %>
           <% if index > 0 && index < @employees.count %>
             <hr>
           <% end %>

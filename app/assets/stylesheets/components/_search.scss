@@ -1,0 +1,38 @@
+.search-container {
+  display: flex;
+  align-items: center;
+
+  h1 {
+    flex-grow: 1;
+  }
+
+  .search-icon {
+    border: 2px solid $orange;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    img {
+      width: 24px;
+    }
+  }
+
+}
+
+.search-form {
+  display: none;
+  
+  input:first-child {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 44px;
+    text-indent: 10px;
+  }
+}
+
+.display-form {
+  display: block;
+}

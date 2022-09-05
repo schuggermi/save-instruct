@@ -3,11 +3,19 @@
 
     <div class="employee_avatar">
       <% if user.photo.attached? %>
-        <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill %>
+        <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill, class: "rounded-circle" %>
       <% else %>
-        <%= image_tag "bee", height: 120, width: 120 %>
+        <%= image_tag "bee", height: 120, width: 120, class: "rounded-circle" %>
       <% end %>
     </div>
+
+    <div class = "rank_tag">
+      <% if user.admin == true %>
+        <p>Admin</p>
+      <% else %>
+       <p>Employee</p>
+        <% end %>
+     </div>
 
     <div class="employee_name">
       <p><%= user.first_name %></p>

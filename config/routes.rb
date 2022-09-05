@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
+  devise_for :users, path: "/employees", path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    sign_up: 'register'
+  }, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
@@ -13,12 +17,18 @@ Rails.application.routes.draw do
         get :move
       end
     end
-    resources :employee_tasks, only: [:index, :new, :create, :destroy, :update]
+    resources :employee_tasks, path: "/assigned-employees", only: [:index, :new, :create, :destroy, :update], path_names: {
+      new: 'update'
+    }
   end
-
+    # resources :users, only: [:index, :show, :edit, :update, :destroy]
   get "employees", to: "users#index"
   get "employees/:id", to: "users#show", as: :employee
+  get "employees/:id/edit", to: "users#edit", as: "edit_employee"
+  patch "employees/:id", to: "employees#update"
+
 
   get "/404", to: "errors#not_found", via: :all
   get "/500", to: "errors#internal_server_error", via: :all
 end
+
