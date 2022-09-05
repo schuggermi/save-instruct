@@ -9,7 +9,7 @@
 }
 
 h1 {
-  margin-top: 10px;
+  // margin-top: 10px;
 }
 
 .employee_name {
@@ -22,4 +22,55 @@ h1 {
   border-radius: 50%;
   height:120px;
   width: 60px;
+}
+
+
+.task-card{
+  background-color: $orange-light;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 15px 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  .title {
+    font-family: $headers-font; // $body-font
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .description, .status {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .status {
+    span {
+      font-family: $headers-font; // $body-font
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    .status-icon {
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-bottom: -5px;
+    }
+
+    .red {
+      background-color: #dd1541;
+      border: 1px solid black;
+    }
+    .green {
+      background-color: #6ec437;
+      border: 1px solid black;
+    }
+    .yellow {
+      background-color: #f6d70e;
+      border: 1px solid black;
+    }
+  }
 }
