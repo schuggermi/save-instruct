@@ -9,6 +9,14 @@
       <% end %>
     </div>
 
+    <div class = "rank_tag">
+      <% if user.admin == true %>
+        <p>Admin</p>
+      <% else %>
+       <p>Employee</p>
+        <% end %>
+     </div>
+
     <div class="employee_name">
       <p><%= user.first_name %></p>
       <p><%= user.last_name %></p>
