@@ -17,7 +17,9 @@ Rails.application.routes.draw do
         get :move
       end
     end
-    resources :employee_tasks, path: "/assigned-employees", only: [:index, :new, :create, :destroy, :update]
+    resources :employee_tasks, path: "/assigned-employees", only: [:index, :new, :create, :destroy, :update], path_names: {
+      new: 'update'
+    }
   end
 
   get "employees", to: "users#index"
