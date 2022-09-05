@@ -11,4 +11,11 @@ class User < ApplicationRecord
   def admin?
     self.admin == true
   end
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+    against: [ :first_name, :last_name ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
