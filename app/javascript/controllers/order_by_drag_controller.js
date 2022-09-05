@@ -1,13 +1,17 @@
 import { Controller } from "@hotwired/stimulus"
-import { Sortable } from "stimulus-sortable"
-
+import Sortable from "sortablejs"
 
 // Connects to data-controller="order-by-drag"
 export default class extends Controller {
   connect() {
-    console.log("Hello!")
-    };
+    this.Sortable = Sortable.create(this.element, {
+      onEnd: this.end.bind(this)
+    })
+  };
+  end(event){
+    console.log(event);
   }
+}
 
 //   end(event) {
 //     console.log("Hello!")
