@@ -1,12 +1,16 @@
 .button {
-  border-radius: 20px;
+  border-radius: 15px;
   width: 100%;
   padding: 10px 20px;
   text-align: center;
+  font-family: $headers-font;
   font-weight: 700;
   font-size: 1.2em;
+  letter-spacing: 0.1em;
+  line-height: 150%;
+  text-transform: uppercase;
   margin: 10px 0;
-  filter: drop-shadow(0.1rem 0.1rem 0.05rem rgba(0, 0, 0, 0.5));
+  height: 44px;
 }
 
 .button-badge {
