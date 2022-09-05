@@ -1,7 +1,11 @@
 class StepsController < ApplicationController
+  before_action :set_step, only: %i[show destroy edit update move]
+
   def new
     @step = Step.new
   end
+
+  def show; end
 
   def create
     @step = Step.new(step_params)
@@ -20,9 +24,18 @@ class StepsController < ApplicationController
     end
   end
 
+  def move
+    @step.insert_at(params[:new_position].to_i)
+    head :ok
+  end
+
   private
 
   def step_params
     params.require(:step).permit(:instruction, :info, :position, :order)
+  end
+
+  def set_step
+    @step = Step.find(params[:id])
   end
 end

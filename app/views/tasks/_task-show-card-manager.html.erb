@@ -11,10 +11,12 @@
   </div>
 
   <div class="my-4">
-    <ul class="my-4" data-controller="sortable" data-sortable-animation-value="150">
     <h3 class="fw-bold">Instructions</h3>
-      <% @task.steps.each do |step| %>
-        <li><%= render 'steps/show', step: step %></li>
+    <ul class="my-4" data-controller="sortable order-by-drag" data-sortable-animation-value="150" id="">
+      <% counter = 1 %>
+      <% @steps.each do |step| %>
+        <li data-order-by-drag-url="<%=move_task_step_path(step.task, step)%>" data-id="<%= step.id %>"><%= render 'steps/show', step: step, counter: counter %></li>
+        <% counter += 1 %>
       <% end %>
     </ul>
   </div>

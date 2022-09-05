@@ -1,3 +1,5 @@
+require 'pry'
+
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, exclude: :error
   before_action :configure_permitted_parameters, if: :devise_controller?

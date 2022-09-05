@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   resources :tasks do
     resources :nfcs, only: [:index, :new, :create, :destroy]
-    resources :steps, only: [:create, :update, :destroy]
+    resources :steps, only: [:create, :update, :destroy, :show] do
+      member do
+        get :move
+      end
+    end
     resources :employee_tasks, only: [:index, :new, :create, :destroy, :update]
   end
 

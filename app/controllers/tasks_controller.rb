@@ -33,7 +33,7 @@ class TasksController < ApplicationController
 
   def show
     @employee_tasks = @task.employee_tasks
-
+    @steps = @task.steps.order(:order)
     @my_employee_tasks = @employee_tasks.where(user_id: current_user.id)
   end
 
