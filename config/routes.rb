@@ -21,10 +21,14 @@ Rails.application.routes.draw do
       new: 'update'
     }
   end
-
+    # resources :users, only: [:index, :show, :edit, :update, :destroy]
   get "employees", to: "users#index"
   get "employees/:id", to: "users#show", as: :employee
+  get "employees/:id/edit", to: "users#edit", as: "edit_employee"
+  patch "employees/:id", to: "employees#update"
+
 
   get "/404", to: "errors#not_found", via: :all
   get "/500", to: "errors#internal_server_error", via: :all
 end
+

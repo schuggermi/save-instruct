@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: :show
+  before_action :set_user, only: [:show, :edit, :destroy]
   # in theory any of the actions associated with this controller will only be
   # available to the manager, it will only go through the managers journey so
   # authentication shant be necessary
@@ -16,8 +16,17 @@ class UsersController < ApplicationController
   end
 
   def delete
-    User.find(params[:id]).destroy
+    @user.destroy
     # redirect_to_users_path, status: :see_other
+  end
+
+  def edit
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], rank: params[:rank], password: params[:password][:password_confirmation] )
+    redirect_to employee_path(@user)
   end
 
   # def create
