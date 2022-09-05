@@ -9,10 +9,24 @@ class TasksController < ApplicationController
         @tasks = Task.all
       end
     else
+      @tasks = []
+      @employee_tasks = EmployeeTask.where(user_id: current_user.id)
+      @employee_tasks.each do |e_task|
+        @tasks << e_task.task
+      end
+
       if params[:query].present?
-        @employee_tasks = EmployeeTask.where(user_id: current_user.id)
+        @employee_tasks_filtered = []
+
+        @tasks.each do |task|
+          if task.name.include?(params[:query])
+            @employee_tasks_filtered << task
+          end
+        end
+
+        @employee_tasks = @employee_tasks_filtered
       else
-        @employee_tasks = EmployeeTask.where(user_id: current_user.id)
+        @employee_tasks = @tasks
       end
     end
   end
