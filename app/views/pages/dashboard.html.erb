@@ -1,18 +1,28 @@
 <div class="container-fluid">
-  <h1 class="text-center my-4">Dashboard</h1>
+  <h1 class="my-4">Dashboard</h1>
 
   <% if current_user.admin? %>
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-6 d-flex flex-column mb-5">
-        <%= link_to "Tasks", tasks_path, class: "button button-outline-orange" %>
-        <%= link_to "Add Task", new_task_path, class: "button button-orange" %>
-      </div>
 
-      <div class="col-12 col-lg-6 d-flex flex-column">
-        <%= link_to "Create employee", new_user_registration_path, class: "button button-purple" %>
-        <%= link_to "Employees List", employees_path, class: "button button-outline-purple" %>
-      </div>
-    </div>
+        <%= link_to new_task_path, class: "button button-outline-orange mb-5" do %>
+          <%= image_tag "ui-icons/file-circle-plus-solid.svg" %>
+          New Task
+        <% end %>
+
+        <%= link_to tasks_path, class: "button button-outline-orange mb-5" do %>
+          <%= image_tag "ui-icons/file-lines-solid.svg" %>
+          Tasks List
+        <% end %>
+
+        <%= link_to new_user_registration_path, class: "button button-outline-orange mb-5" do %>
+          <%= image_tag "ui-icons/user-plus-solid.svg" %>
+          New employee
+        <% end %>
+
+        <%= link_to employees_path, class: "button button-outline-orange mb-5" do %>
+          <%= image_tag "ui-icons/user-group-solid.svg" %>
+          Employees List
+        <% end %>
+
   <% else %>
     <% controller.redirect_to tasks_path %>
   <% end %>
