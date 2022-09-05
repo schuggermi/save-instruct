@@ -7,10 +7,15 @@
 <%# finally we need a function to scroll down, since there wont be enough space for all employees in one screen alone %>
 <%# also remember 360x640 for Android and 375x667 for iOS %>
 
-<div class= "container-fluid">
-  <div>
+<div data-controller="search-employees">
+  <div class="search-container" data-action="click->search-employees#DisplaySearchForm">
     <h1 class="text-center">Employees</h1>
+    <div class="search-icon">
+        <%= image_tag "ui-icons/magnifying-glass-solid.svg" %>
+    </div>
   </div>
+
+  <div data-search-employees-target="form" class="search-form">
     <%= form_with url: employees_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
         params[:query],
@@ -19,12 +24,14 @@
         %>
       <%= submit_tag "Search", class: "btn btn-dark" %>
     <% end %>
+  </div>
 
-  <div>
+  <%# <div> %>
     <% if !@users.count.negative? %>
       <% @users.each do |user| %>
         <%= render "employee_card", user: user %>
       <% end %>
     <% end %>
-  </div>
+  <%# </div> %>
+
 </div>
