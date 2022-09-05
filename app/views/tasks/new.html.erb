@@ -1,10 +1,10 @@
-<h1>Add a New Task</h1>
+<h1>New Task</h1>
 <%= simple_form_for @task, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
 
   <%= f.input :name %>
   <%= f.input :description %>
 
-  <h1>Add a New Step</h1>
+  <h2>Define Steps</h1>
       <%= f.simple_fields_for :steps, @task.steps do |t| %>
       <%= render "steps/new", s: t, template: false %>
     <% end %>
@@ -15,7 +15,7 @@
     <% end %>
   </template>
   <div data-nested-form-target="target"></div>
-  <button type="button" data-action="nested-form#add">Add step</button>
+  <button type="button" data-action="nested-form#add" class="button button-purple">Add another step</button>
 
-  <%= f.submit %>
+  <%= f.submit class: "button button-orange mt-4" %>
 <% end %>
