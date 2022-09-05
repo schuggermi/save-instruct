@@ -1,10 +1,41 @@
+<div>
+  <%= link_to ' <--All Employees', employees_path, class: "btn btn-dark"%>
+</div>
+
 <div class="container-fluid">
 
-  <h1 class="text-center"><%= @task.name %></h1>
+  <h1 class="text-center"><%= @user.first_name %> <%= @user.last_name %></h1>
 
+ <div class="profile_avatar">
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill %>
+      <% else %>
+        <%= image_tag "bee", height: 120, width: 120 %>
+      <% end %>
+  </div>
   <div>
-    <%= link_to 'All tasks', tasks_path, class: "btn btn-outline-info" %>
+    <p>content content content content content content content content content
+    content content content content content contentcontent content content content
+    content contentcontent content content content content content VERY important
+    content</p>
   </div>
 
-  <%= render 'task-show-card', task: @task %>
+  <h2> Tasks list </h2>
+  <div>
+    <ul class= "profile_task_list">
+      <% @user.employee_tasks.each do |employee_task| %>
+        <%= render "tasks/task-card", task: employee_task.task %>
+      <% end %>
+  <%# </div>
+  <%= link_to 'Edit Information', employees_path, class: "btn btn-dark"%>
+  <%# </div> %>
 </div>
+
+<%# 1 I need to establish all the conections between user show and user index
+    2 I have to connect to edit method... which I belive is not done yet.
+    3 I have to create an h1 which, responsding to the user id, will interpolate
+    and display the user first and last names.
+    4 I have to display the avatar, the same way I did in index (easy)
+    5 make a <p> with some content... whatever that´s supposed to be
+    6 make and unorder list and interpolate with assigned tasks (not entirely sure
+    about this one)%>

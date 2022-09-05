@@ -1,0 +1,85 @@
+.button {
+  border-radius: 15px;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  font-family: $headers-font;
+  font-weight: 700;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
+  line-height: 150%;
+  text-transform: uppercase;
+  margin: 10px 0;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: 1.2em;
+    margin-right: 10px;
+  }
+}
+
+.button-badge {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: $orange;
+  color: white;
+  padding: 5px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-outline-orange {
+  background-color: transparent!important;
+  border: 2px solid $orange;
+  font-family: $body-font;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  text-transform: capitalize;
+}
+
+a.button-outline-orange:hover {
+  background-color: $orange-light!important;
+}
+
+.button-outline-purple {
+  border: 2px solid $purple;
+}
+
+a.button-outline-purple:hover {
+  background-color: $purple-light!important;
+}
+
+.button-orange {
+  background-color: $orange;
+  border: none;
+}
+
+.button-orange:hover {
+  color: white!important;
+}
+
+a.button-orange:hover {
+  color: white!important;
+}
+
+.button-purple {
+  background-color: $purple;
+  border: none;
+}
+
+.button-purple:hover {
+  color: white!important;
+}
+
+a.button-purple:hover {
+  color: white!important;
+}

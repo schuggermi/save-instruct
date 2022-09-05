@@ -1,11 +1,29 @@
-<h1>Save Instruct Dashboard Manager</h1>
-<%# TODO : Change the view for Manager and Employee %>
+<div class="container-fluid">
+  <h1 class="my-4">Dashboard</h1>
 
-<% if current_user.admin? %>
-  <%= button_to "Add Task", new_task_path, :id => "new-task-btn",
-      :class => "btn btn-success", :method => :get %>
-  <%= link_to "Create employee", new_user_registration_path, class: "btn btn-primary" %>
-  <%= link_to "Tasks", tasks_path, class: "btn btn-info" %>
-<% else %>
-  <%= link_to "Tasks", tasks_path, class: "btn btn-info" %>
-<% end %>
+  <% if current_user.admin? %>
+
+        <%= link_to new_task_path, class: "button button-outline-orange mb-5" do %>
+          <%= image_tag "ui-icons/file-circle-plus-solid.svg" %>
+          New Task
+        <% end %>
+
+        <%= link_to tasks_path, class: "button button-outline-orange mb-5" do %>
+          <%= image_tag "ui-icons/file-lines-solid.svg" %>
+          Tasks List
+        <% end %>
+
+        <%= link_to new_user_registration_path, class: "button button-outline-orange mb-5" do %>
+          <%= image_tag "ui-icons/user-plus-solid.svg" %>
+          New employee
+        <% end %>
+
+        <%= link_to employees_path, class: "button button-outline-orange mb-5" do %>
+          <%= image_tag "ui-icons/user-group-solid.svg" %>
+          Employees List
+        <% end %>
+
+  <% else %>
+    <%= controller.redirect_to tasks_path %>
+  <% end %>
+</div>

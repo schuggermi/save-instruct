@@ -11,15 +11,39 @@
 @import "components/index";
 @import "pages/index";
 
+a {
+  color: black!important;
+  text-decoration: none;
+
+  :hover, :focus, :active {
+    color: black!important;
+  }
+}
+
 ul {
   padding-left: 0;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+h1, h2 {
   padding: 20px 0 10px 0;
+  font-family: $headers-font;
+  font-weight: bold;
+  font-size: 33px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #000000;
+  text-transform: uppercase;
 }
 
 hr {
   color: $purple;
   border-width: 3px;
+}
+
+.full-logo {
+  width: 215px;
 }

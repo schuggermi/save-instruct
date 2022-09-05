@@ -1,0 +1,59 @@
+.simple_form {
+  margin-bottom: 10px;
+}
+
+label {
+  font-family: $headers-font;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+input.form-control {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 44px;
+}
+textarea.form-control {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.form-login .form-check {
+  display: flex;
+  align-items: center;
+}
+
+.form-login .form-check label {
+  padding-left: 10px;
+}
+
+.form-check-input:checked {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.link {
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
+.form-steps {
+  border: 2px solid $purple;
+  border-radius: 5px;
+  padding: 12px;
+
+  .remove-step {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    button {
+      margin-bottom: 1rem !important;
+      margin-left: 20px;
+    }
+  }
+}
