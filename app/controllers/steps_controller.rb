@@ -5,12 +5,15 @@ class StepsController < ApplicationController
     @step = Step.new
   end
 
-  def show; end
+  def show
+    @step = Step.new
+  end
 
   def create
     @step = Step.new(step_params)
+    @step.task_id = params[:task_id]
     @step.save
-    redirect_to root
+    redirect_to task_path(@step.task)
   end
 
   def update

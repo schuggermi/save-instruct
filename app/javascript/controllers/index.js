@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddStepController from "./add_step_controller"
+application.register("add-step", AddStepController)
+
 import EditStepController from "./edit_step_controller"
 application.register("edit-step", EditStepController)
 
@@ -21,6 +24,9 @@ application.register("nfc", NfcController)
 
 import OrderByDragController from "./order_by_drag_controller"
 application.register("order-by-drag", OrderByDragController)
+
+import NestedForm from 'stimulus-rails-nested-form'
+application.register('nested-form', NestedForm)
 
 import SearchItemsController from "./search_items_controller"
 application.register("search-items", SearchItemsController)

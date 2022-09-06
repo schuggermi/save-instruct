@@ -6,8 +6,8 @@
 
 <div class="task-card" data-controller="toggle-sortable">
   <div>
-    <h3 class="fw-bold mb-3">Description</h3>
-    <p class="text-dark"><%= task.description %></p>
+    <h3 class="fw-bold">Description</h3>
+    <p class="ps-3 text-gray">"<%= @task.description %>"</p>
   </div>
 
   <div class="my-4">
@@ -23,13 +23,31 @@
       </label>
     </div>
 
+  <div data-controller="add-step" class="my-4">
+    <h3 class="fw-bold">Instructions</h3>
 
+    <ul class="my-4" data-controller="sortable order-by-drag" data-sortable-animation-value="150">
+      <div class="d-flex align-items-center justify-content-end">
+        <p class="mb-0 fw-bold pe-3" data-order-by-drag-target="switchlabel">Sort</p>
+        <label class="switch">
+          <input type="checkbox" data-action="click->order-by-drag#detach">
+          <span class="slider round"></span>
+        </label>
+      </div>
       <% counter = 1 %>
       <% @steps.each do |step| %>
         <li data-order-by-drag-url="<%= move_task_step_path(step.task, step)%>" data-id="<%= step.id %>"><%= render 'steps/show', step: step, counter: counter %></li>
         <% counter += 1 %>
       <% end %>
     </ul>
+    <button data-action="click->add-step#addStep" type="button">Add Step</button>
+    <div data-add-step-target="list" class="d-none">
+      <%= simple_form_for [@task, @step] do |f| %>
+        <%= f.input :instruction %>
+        <%= f.input :info %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
   </div>
 
   <div class="">
@@ -40,7 +58,8 @@
       <% end %>
     </ul>
   </div>
-  <%= link_to 'Assign Chip', new_task_nfc_path(task), class: "button button-outline-orange" %>
+
+  <%= link_to 'Add NFC Chip', new_task_nfc_path(@task), class: "button button-outline-orange" %>
 
   <div class="my-4">
     <h3 class="fw-bold">Assigned Employees</h3>
@@ -59,7 +78,7 @@
       <% end %>
     </ul>
   </div>
-  <%= link_to 'Add/Remove employee', new_task_employee_task_path(task), class: "button button-outline-orange" %>
+  <%= link_to 'Add/Remove employee', new_task_employee_task_path(@task), class: "button button-outline-orange" %>
 
-  <%= link_to 'Edit task', edit_task_path(task), class: "button button-outline-orange" %>
+  <%= link_to 'Edit task', edit_task_path(@task), class: "button button-outline-orange" %>
 </div>
