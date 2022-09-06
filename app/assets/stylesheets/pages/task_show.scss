@@ -1,0 +1,22 @@
+.task-card {
+  padding: 10px;
+  background-color: $orange-light;
+}
+
+.step-card {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+.nfc-card {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+.employees li:last-child {
+  border-bottom: none!important;
+}

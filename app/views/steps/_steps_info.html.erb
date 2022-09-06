@@ -1,10 +1,15 @@
-<div class="px-3" style="line-height: 0.8" data-edit-step-target="infos">
-  <% if current_user.admin? %>
-    <p class="d-flex justify-content-between"><%= step.instruction %> <%= fa_icon ["pencil", "1x"], data: { action: "click->edit-step#display" }, class: "text-danger" %></p>
-  <% else %>
-    <p class="d-flex justify-content-between"><%= step.instruction %></p>
-  <% end %>
-  <p class="text-warning"><%= step.info %></p>
+<div data-edit-step-target="infos" class="px-2">
+  <div class="row justify-content-between align-items-center">
+    <div class="col-10">
+      <p class="fw-bold pb-0"><%= step.instruction %></p>
+    </div>
+    <% if current_user.admin? %>
+    <div class="col-2">
+      <p class="d-flex justify-content-center align-items-center button-badge"><%= fa_icon ["pencil", "1x"], data: { action: "click->edit-step#display" }, class: "text-dark" %></p>  <% else %>
+    </div>
+    <% end %>
+  </div>
+  <p class="text-dark mb-0"><%= step.info %></p>
 </div>
 
 <%# data-order-by-drag-url="<%= "tasks/#{@task}/steps/#{step.id}?order=#{step.order}" %>
