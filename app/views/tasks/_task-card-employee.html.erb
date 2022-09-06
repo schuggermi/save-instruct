@@ -1,0 +1,38 @@
+<% if !employee_tasks.count.negative? %>
+
+  <% employee_tasks.each do |employee| %>
+
+    <div class="task-card employee-card">
+
+      <p class="title"><%= employee.task.name %></p>
+
+      <p class="description"><%= employee.task.description %></p>
+
+      <% class_color = "" %>
+      <% status = "" %>
+      <% if employee.task_done? %>
+        <% if employeetask_done.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d") %>
+          <% class_color = "green" %>
+          <% status = "Done" %>
+        <% else %>
+          <% class_color = "red" %>
+          <% status = "Pending" %>
+        <% end %>
+      <% else %>
+        <% class_color = "red" %>
+        <% status = "Pending" %>
+      <% end %>
+
+      <p class="status"><span>Status:</span> <%= status %> <span class="status-icon <%= class_color %>"></span></p>
+
+      <div>
+        <%= link_to task_path(employee.task), class: "button button-outline-purple" do %>
+            Go to task
+        <% end %>
+      </div>
+
+    </div>
+
+  <% end %>
+
+ <% end %>
