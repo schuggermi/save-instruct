@@ -8,6 +8,12 @@ class TasksController < ApplicationController
       else
         @tasks = Task.all
       end
+
+      respond_to do |format|
+        format.html # Follow regular flow of Rails
+        format.text { render partial: "tasks/task-card", locals: { tasks: @tasks }, formats: [:html] }
+      end
+
     else
       @tasks = []
       @employee_tasks = EmployeeTask.where(user_id: current_user.id)
@@ -19,7 +25,7 @@ class TasksController < ApplicationController
         @employee_tasks_filtered = []
 
         @tasks.each do |task|
-          if task.name.include?(params[:query])
+          if task.name.downcase.include?(params[:query].downcase)
             @employee_tasks_filtered << task
           end
         end
@@ -28,7 +34,14 @@ class TasksController < ApplicationController
       else
         @employee_tasks = @tasks
       end
+
+      respond_to do |format|
+        format.html # Follow regular flow of Rails
+        format.text { render partial: "tasks/task-card", locals: { tasks: @employee_tasks }, formats: [:html] }
+      end
+
     end
+    
   end
 
   def show
