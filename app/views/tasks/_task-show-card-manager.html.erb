@@ -12,13 +12,14 @@
 
   <div class="my-4">
     <h3 class="fw-bold">Instructions</h3>
-    <ul class="my-4" data-controller="sortable order-by-drag" data-sortable-animation-value="150" id="">
-    <button type="button" data-action="click->order-by-drag#detach">Toggle Sortable</button>
-      <% counter = 1 %>
-      <% @steps.each do |step| %>
-        <li data-order-by-drag-url="<%=move_task_step_path(step.task, step)%>" data-id="<%= step.id %>"><%= render 'steps/show', step: step, counter: counter %></li>
-        <% counter += 1 %>
-      <% end %>
+    <ul class="my-4" data-add-step-target="list" data-controller="sortable order-by-drag add-step" data-sortable-animation-value="150">
+      <button type="button" data-action="click->add-step#addStep">Add Step</button>
+      <button type="button" data-action="click->order-by-drag#detach">Toggle Sortable</button>
+        <% counter = 1 %>
+        <% @steps.each do |step| %>
+          <li data-order-by-drag-url="<%=move_task_step_path(step.task, step)%>" data-id="<%= step.id %>"><%= render 'steps/show', step: step, counter: counter %></li>
+          <% counter += 1 %>
+        <% end %>
     </ul>
   </div>
 

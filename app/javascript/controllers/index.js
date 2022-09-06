@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddStepController from "./add_step_controller"
+application.register("add-step", AddStepController)
+
 import EditStepController from "./edit_step_controller"
 application.register("edit-step", EditStepController)
 
@@ -19,14 +22,11 @@ application.register("mark-done", MarkDoneController)
 import NfcController from "./nfc_controller"
 application.register("nfc", NfcController)
 
-import NestedForm from 'stimulus-rails-nested-form'
-application.register('nested-form', NestedForm)
-
-import Sortable from 'sortablejs'
-application.register('sortable', Sortable)
-
 import OrderByDragController from "./order_by_drag_controller"
 application.register("order-by-drag", OrderByDragController)
 
 import SearchTasksController from "./search_tasks_controller"
 application.register("search-tasks", SearchTasksController)
+
+import NestedForm from 'stimulus-rails-nested-form'
+application.register('nested-form', NestedForm)
