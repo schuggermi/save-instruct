@@ -8,9 +8,9 @@
 
  <div class="profile_avatar">
     <% if @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, height: 220, width: 220, crop: :fill, class: "rounded-circle" %>
+      <%= cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill, class: "rounded-circle" %>
       <% else %>
-        <%= image_tag "bee", height: 220, width: 220, class: "rounded-circle" %>
+        <%= image_tag "bee", height: 120, width: 120, class: "rounded-circle" %>
     <% end %>
   </div>
   <div>
