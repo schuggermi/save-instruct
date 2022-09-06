@@ -1,11 +1,14 @@
 <div data-edit-step-target="infos" class="px-2">
-  <div class="row justify-content-between align-items-center">
+  <div class="row justify-content-center align-items-center">
     <div class="col-10">
-      <p class="fw-bold pb-0"><%= step.instruction %></p>
+      <p class="fw-bold mb-0"><%= step.instruction %></p>
     </div>
     <% if current_user.admin? %>
-    <div class="col-2">
-      <p class="d-flex justify-content-center align-items-center button-badge"><%= fa_icon ["pencil", "1x"], data: { action: "click->edit-step#display" }, class: "text-dark" %></p>  <% else %>
+    <div class="col-2 d-flex justify-content-end align-items-center">
+      <p class="button-badge mb-0">
+        <%= fa_icon ["pencil", "1x"], data: { action: "click->edit-step#display" }, class: "text-dark" %>
+      </p>
+    <% else %>
     </div>
     <% end %>
   </div>
