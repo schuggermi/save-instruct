@@ -41,7 +41,7 @@ class TasksController < ApplicationController
       end
 
     end
-    
+
   end
 
   def show
@@ -66,7 +66,11 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit
+  def edit; end
+
+  def add
+    @task.step = Step.new
+    @task.step.save
   end
 
   def update

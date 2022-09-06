@@ -4,9 +4,8 @@
   <div class="my-4">
     <%= link_to 'All tasks', tasks_path, class: "button button-purple" %>
   </div>
-
-  <% if current_user.admin? %>
-    <%= render 'task-show-card-manager', { task: @task, step: @step } %>
+ <% if current_user.admin? %>
+    <%= render 'task-show-card-manager', locals:{task: @task, step: @step} %>
   <% else %>
     <%= render 'task-show-card-employee', task: @task %>
   <% end %>

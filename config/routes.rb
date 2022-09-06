@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :tasks do
     resources :nfcs, only: [:index, :new, :create, :destroy]
-    resources :steps, only: [:create, :update, :destroy, :show] do
+    resources :steps, only: [:add, :create, :update, :destroy, :show] do
       member do
         get :move
       end
@@ -31,4 +31,3 @@ Rails.application.routes.draw do
   get "/404", to: "errors#not_found", via: :all
   get "/500", to: "errors#internal_server_error", via: :all
 end
-

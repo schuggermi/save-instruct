@@ -25,9 +25,6 @@ application.register("nfc", NfcController)
 import OrderByDragController from "./order_by_drag_controller"
 application.register("order-by-drag", OrderByDragController)
 
-import SearchTasksController from "./search_tasks_controller"
-application.register("search-tasks", SearchTasksController)
-
 import NestedForm from 'stimulus-rails-nested-form'
 application.register('nested-form', NestedForm)
 
