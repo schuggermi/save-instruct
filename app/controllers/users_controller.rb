@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if params[:query].present?
       @users = User.search_employee(params[:query])
     else
-    @users = User.all
+      @users = User.all
     end
   end
 
@@ -26,35 +26,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @user = User.find(params[:id])
     @user.destroy
-    # redirect_to_users_path, status: :see_other
+    redirect_to employees_path, status: :see_other, notice: "this person has been fired, or eaten by sharks"
   end
-
-  # def edit
-  #   @user = User.find(params[:id])
-  #   render :edit
-  # end
-
-  # def update
-  #   @user = User.find(params[:id])
-  #   if @user.update(para,s.require(:user.permit(:email, :first_name, :last_name, :rank, :password, :password_confirmation)))
-  #     flash[:success] ="This Profile has been updated, good on ya mate"
-  #     redirect_to employee_path(@user)
-  #   else
-  #     flash.now[:error] = "It didn`t work this time man... why are you even an admin?"
-  #     render :edit
-  #   end
-    # @user.update
-    # @user.save
-    # @user.update(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], rank: params[:rank], password: params[:password][:password_confirmation] )
-
-  # end
-
-
-  # def create
-  #   @user = User.new(user_params)
-  # end
 
   private
 
@@ -65,5 +41,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :rank, :username, :email, :photo)
   end
-
 end

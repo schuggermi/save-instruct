@@ -11,7 +11,7 @@
       <%= cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill, class: "rounded-circle" %>
       <% else %>
         <%= image_tag "bee", height: 120, width: 120, class: "rounded-circle" %>
-      <% end %>
+    <% end %>
   </div>
   <div>
     <p>Hold the potato in one hand and the peeler in your other hand. Stand at the sink or over the garbage before you go to peel your potato. This way you don’t end up with bits of potato skin all over your kitchen. There are two generic "shapes" potato peelers; here's how to hold each one:
@@ -30,6 +30,12 @@
   <div>
     <% if current_user.admin == true %>
      <%=link_to 'Edit Information', edit_employee_path(@user), class: "btn btn-primary"%>
-     <% end %>
+    <% end %>
    </div>
+
+  <div>
+    <% if current_user.admin == true %>
+      <%= link_to 'Delete', employee_destroy_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-warning" %>
+    <% end %>
+  </div>
 </div>

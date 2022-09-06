@@ -21,5 +21,5 @@
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= link_to "Cancel my account", employee_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></p>
 <%= link_to "Back", employee_path %>
