@@ -28,5 +28,5 @@ application.register('sortable', Sortable)
 import OrderByDragController from "./order_by_drag_controller"
 application.register("order-by-drag", OrderByDragController)
 
-import SearchTasksController from "./search_tasks_controller"
-application.register("search-tasks", SearchTasksController)
+import SearchItemsController from "./search_items_controller"
+application.register("search-items", SearchItemsController)

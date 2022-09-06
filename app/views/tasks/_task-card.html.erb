@@ -1,37 +1,45 @@
-<div class="task-card">
+<% if !tasks.count.negative? %>
 
-  <p class="title"><%= task.name %></p>
+  <% tasks.each do |task| %>
 
-  <p class="description"><%= task.description %></p>
+    <div class="task-card">
 
-  <% if current_user.admin? %>
-    <% assigned_employee = 0 %>
-    <% done_task = 0 %>
-    <% task.employee_tasks.each do |employee_task| %>
-      <% assigned_employee += 1 %>
-      <% if employee_task.task_done? && employee_task.task_done.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d") %>
-        <% done_task += 1 %>
+      <p class="title"><%= task.name %></p>
+
+      <p class="description"><%= task.description %></p>
+
+      <% if current_user.admin? %>
+        <% assigned_employee = 0 %>
+        <% done_task = 0 %>
+        <% task.employee_tasks.each do |employee_task| %>
+          <% assigned_employee += 1 %>
+          <% if employee_task.task_done? && employee_task.task_done.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d") %>
+            <% done_task += 1 %>
+          <% end %>
+        <% end %>
+
+        <% class_color = "" %>
+        <% if assigned_employee > 0 %>
+          <% if done_task == 0 %>
+            <% class_color = "red" %>
+          <% elsif done_task > 0 && done_task == assigned_employee%>
+            <% class_color = "green" %>
+          <% else %>
+            <% class_color = "yellow" %>
+          <% end %>
+        <% end %>
+
+        <p class="status"><span>Status:</span> <%= done_task %> out of <%= assigned_employee %> employees completed the task <span class="status-icon <%= class_color %>"></span></p>
       <% end %>
-    <% end %>
 
-    <% class_color = "" %>
-    <% if assigned_employee > 0 %>
-      <% if done_task == 0 %>
-        <% class_color = "red" %>
-      <% elsif done_task > 0 && done_task == assigned_employee%>
-        <% class_color = "green" %>
-      <% else %>
-        <% class_color = "yellow" %>
-      <% end %>
-    <% end %>
+      <div>
+        <%= link_to task_path(task), class: "button button-orange" do %>
+            Go to task
+        <% end %>
+      </div>
 
-    <p class="status"><span>Status:</span> <%= done_task %> out of <%= assigned_employee %> employees completed the task <span class="status-icon <%= class_color %>"></span></p>
+    </div>
+
   <% end %>
 
-  <div>
-    <%= link_to task_path(task), class: "button button-orange" do %>
-        Go to task
-    <% end %>
-  </div>
-
-</div>
+ <% end %>

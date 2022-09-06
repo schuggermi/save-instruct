@@ -5,10 +5,15 @@ class UsersController < ApplicationController
   # authentication shant be necessary
 
   def index
+    @users = User.all
+
     if params[:query].present?
       @users = User.search_employee(params[:query])
-    else
-    @users = User.all
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "users/employee_card", locals: { users: @users }, formats: [:html] }
     end
   end
 

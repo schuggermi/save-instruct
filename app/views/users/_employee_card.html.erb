@@ -1,32 +1,36 @@
-<div class="employee-card">
+<% if !users.count.negative? %>
 
-  <div class="content">
-    <div class="avatar-container">
-      <% if user.photo.attached? %>
-        <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill, class: "rounded-circle" %>
-      <% else %>
-        <%= image_tag "bee", height: 120, width: 120, class: "rounded-circle" %>
-      <% end %>
+  <% users.each do |user| %>
+     
+    <div class="employee-card">
+
+      <div class="content">
+        <div class="avatar-container">
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill, class: "rounded-circle" %>
+          <% else %>
+            <%= image_tag "bee", height: 120, width: 120, class: "rounded-circle" %>
+          <% end %>
+        </div>
+
+        <div class="info-container">
+          <p><%= user.first_name %></p>
+          <p><%= user.last_name %></p>
+          <p class="tasks"><%= pluralize user.tasks.size, "task" %> assigned</p> 
+        </div>
+      </div>
+
+      <div>
+        <%= link_to employee_path(user), class: "button button-purple" do %>
+            Go to employee
+        <% end %>
+      </div>
+
     </div>
 
-    <div class="info-container">
-      <p><%= user.first_name %></p>
-      <p><%= user.last_name %></p>
-      <p class="tasks"><%= pluralize user.tasks.size, "task" %> assigned</p> 
-    </div>
-  </div>
+  <% end %>
 
-  <div>
-    <%= link_to employee_path(user), class: "button button-purple" do %>
-        Go to employee
-    <% end %>
-  </div>
-
-</div>
-
-<%# follow:
-- create and link controller for search %>
-
+ <% end %>
 
 
 
