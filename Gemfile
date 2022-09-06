@@ -66,7 +66,6 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 gem "autoprefixer-rails"
 # Font Awesome
-gem "font-awesome-sass", "~> 6.1"
 gem "font-awesome-rails"
 gem "simple_form", github: "heartcombo/simple_form"
 group :development, :test do

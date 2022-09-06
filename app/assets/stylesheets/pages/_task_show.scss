@@ -17,6 +17,10 @@
   border: 2px solid rgba(0, 0, 0, 0.6);
 }
 
+.employees li {
+  border-color: $purple!important;
+}
+
 .employees li:last-child {
   border-bottom: none!important;
 }

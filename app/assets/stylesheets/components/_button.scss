@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0.1rem 0.1rem 0.1rem $dark);
+  filter: drop-shadow(0.07rem 0.07rem 0.08rem $dark);
 
   img {
     height: 1.2em;
@@ -43,6 +43,28 @@
   background-color: $orange-medium!important;
 }
 
+.button-outline-badge {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background-color: transparent!important;
+  color: $dark;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  filter: drop-shadow(0.1rem 0.02rem 0.05rem $dark);
+  border: 2px solid $orange;
+}
+
+.button-outline-badge:hover {
+  background-color: $orange-medium!important;
+}
+
 .button-outline-orange {
   background-color: transparent!important;
   border: 2px solid $orange;
@@ -58,7 +80,13 @@ a.button-outline-orange:hover {
 }
 
 .button-outline-purple {
+  background-color: transparent!important;
   border: 2px solid $purple;
+  font-family: $body-font;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  text-transform: capitalize;
 }
 
 a.button-outline-purple:hover {

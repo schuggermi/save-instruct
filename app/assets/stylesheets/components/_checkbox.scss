@@ -8,12 +8,12 @@ input[type="checkbox"] {
   color: currentColor;
   width: 1.15em;
   height: 1.15em;
-  border: 0.05em solid $purple;
+  border: 0.05em solid $orange;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
   display: grid;
   place-content: center;
-  filter: drop-shadow(0.16rem 0.16rem 0.12rem $dark);
+  filter: drop-shadow(0.1rem 0.15rem 0.08rem $dark);
 }
 
 input[type="checkbox"]::before {
@@ -26,7 +26,6 @@ input[type="checkbox"]::before {
   background-color: $orange;
   transform-origin: top right;
   clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-  filter: drop-shadow(0.2rem 0.2rem 0.2rem $dark);
 }
 
 input[type="checkbox"]:checked::before {

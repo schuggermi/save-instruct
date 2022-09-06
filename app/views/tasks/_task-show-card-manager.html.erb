@@ -6,20 +6,21 @@
 
 <div class="task-card" data-controller="toggle-sortable">
   <div>
-    <h3 class="fw-bold">Description</h3>
-    <p class="ps-3 text-gray">"<%= @task.description %>"</p>
+    <h3 class="fw-bold mb-3">Description</h3>
+    <p><%= @task.description %></p>
   </div>
 
-  <div data-controller="add-step" class="my-4">
-    <h3 class="fw-bold">Instructions</h3>
-
-    <ul class="my-4" data-controller="sortable order-by-drag" data-sortable-animation-value="150">
-      <div class="d-flex align-items-center justify-content-end">
-        <p class="mb-0 fw-bold pe-3" data-order-by-drag-target="switchlabel">Sort</p>
-        <label class="switch">
-          <input type="checkbox" data-action="click->order-by-drag#detach">
-          <span class="slider round"></span>
-        </label>
+  <div data-controller="add-step" class="mt-4 mb-5">
+    <ul class="mb-4" data-controller="sortable order-by-drag" data-sortable-animation-value="150">
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <h3 class="fw-bold">Instructions</h3>
+        <div class="d-flex align-items-center">
+          <p class="mb-0 fw-bold pe-3" data-order-by-drag-target="switchlabel">Sort</p>
+          <label class="switch">
+            <input type="checkbox" data-action="click->order-by-drag#detach">
+            <span class="slider round"></span>
+          </label>
+        </div>
       </div>
       <% counter = 1 %>
       <% @steps.each do |step| %>
@@ -27,7 +28,7 @@
         <% counter += 1 %>
       <% end %>
     </ul>
-    <button data-action="click->add-step#addStep" type="button">Add Step</button>
+    <button class="button button-outline-orange" data-action="click->add-step#addStep" type="button">New Step</button>
     <div data-add-step-target="list" class="d-none">
       <%= simple_form_for [@task, @step] do |f| %>
         <%= f.input :instruction %>
@@ -37,8 +38,11 @@
     </div>
   </div>
 
-  <div class="">
+  <div>
     <h3 class="fw-bold mb-3">NFC Chips</h3>
+    <% if @task.nfcs.count.zero? %>
+      <p>No NFC Tag's assigned yet.</p>
+    <% end %>
     <ul class="mb-4">
       <% @task.nfcs.each do |nfc| %>
         <%= render 'nfc-card', nfc: nfc, task: @task %>
@@ -46,7 +50,7 @@
     </ul>
   </div>
 
-  <%= link_to 'Add NFC Chip', new_task_nfc_path(@task), class: "button button-outline-orange" %>
+  <%= link_to 'Assign NFC Tag', new_task_nfc_path(@task), class: "button button-outline-orange" %>
 
   <div class="my-4">
     <h3 class="fw-bold">Assigned Employees</h3>
@@ -65,7 +69,5 @@
       <% end %>
     </ul>
   </div>
-  <%= link_to 'Add/Remove employee', new_task_employee_task_path(@task), class: "button button-outline-orange" %>
-
-  <%= link_to 'Edit task', edit_task_path(@task), class: "button button-outline-orange" %>
+  <%= link_to 'Add/Remove employee', new_task_employee_task_path(@task), class: "button button-outline-purple" %>
 </div>

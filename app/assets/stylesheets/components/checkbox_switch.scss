@@ -18,10 +18,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $purple-switch;
+  background-color: $orange-light;
   -webkit-transition: .4s;
   transition: .4s;
-  border: 1px solid $purple;
+  border: 1px solid $orange;
 }
 .slider:before {
   position: absolute;
@@ -30,15 +30,15 @@
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: $purple;
+  background-color: $orange;
   -webkit-transition: .4s;
   transition: .4s;
 }
   input:checked + .slider {
-  background-color: $light-gray;
+  background-color: $orange-medium;
 }
   input:focus + .slider {
-  box-shadow: 0 0 1px $light-gray;
+  box-shadow: 0 0 1px $orange-medium;
 }
   input:checked + .slider:before {
   -webkit-transform: translateX(26px);

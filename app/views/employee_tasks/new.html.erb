@@ -1,26 +1,26 @@
 <div class="container" data-controller="search-items">
-  
+
   <div class="search-container" data-action="click->search-items#displaySearchForm">
     <h1 class="text-center fs-2 w-75">Assigned / Remove Employees</h1>
-    <div class="search-icon">
-        <%= image_tag "ui-icons/magnifying-glass-solid.svg" %>
+    <div class="button-outline-badge">
+      <%= fa_icon "magnifying-glass" %>
     </div>
   </div>
 
-  <div class="">
+  <div>
     <%= form_with url: new_task_employee_task_path(@task), method: :get, html: {class: "search-form mb-4", data: {search_items_target: "form"}} do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
         placeholder: "Type your employee search here",
         data: {search_items_target: "input",
-        action: "keyup->search-items#showSearchedEmployees"} 
+        action: "keyup->search-items#showSearchedEmployees"}
         %>
     <% end %>
   </div>
 
     <%= simple_form_for [@task, @employee_task] do |f| %>
-      <%= f.submit "Save changes", class: "button button-outline-orange mt-5 mb-3" %>
+      <%= f.submit "Save changes", class: "button button-outline-orange my-4" %>
 
       <div class="d-flex list-unstyled justify-content-end align-items-center w-75 mx-auto">
           <label for="checker">Select all</label>
@@ -28,7 +28,7 @@
         </div>
 
       <ul class="list-style-none w-75 mx-auto my-4 employee-list" data-search-items-target="content">
-        
+
         <%= render "employees", employees: @employees %>
 
       </ul>
