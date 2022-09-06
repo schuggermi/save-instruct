@@ -7,24 +7,29 @@
 <%# finally we need a function to scroll down, since there wont be enough space for all employees in one screen alone %>
 <%# also remember 360x640 for Android and 375x667 for iOS %>
 
-<div class= "container-fluid">
-  <div>
+<div data-controller="search-items">
+  <div class="search-container" data-action="click->search-items#displaySearchForm">
     <h1 class="text-center">Employees</h1>
+    <div class="search-icon">
+        <%= image_tag "ui-icons/magnifying-glass-solid.svg" %>
+    </div>
   </div>
-    <%= form_with url: employees_path, method: :get, class: "d-flex" do %>
+
+  <div class="">
+    <%= form_with url: employees_path, method: :get, html: {class:
+    "search-form mb-4", data: {search_items_target: "form"}} do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find an employee"
+        placeholder: "Type your employee search here",
+        data: {search_items_target: "input",
+        action: "keyup->search-items#search"}
         %>
-      <%= submit_tag "Search", class: "btn btn-dark" %>
-    <% end %>
-
-  <div>
-    <% if !@users.count.negative? %>
-      <% @users.each do |user| %>
-        <%= render "employee_card", user: user %>
-      <% end %>
     <% end %>
   </div>
+
+  <div data-search-items-target="content">
+    <%= render "employee_card", users: @users %>
+  </div>
+
 </div>

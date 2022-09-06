@@ -1,33 +1,43 @@
-<%= link_to employee_path(user) do %>
-  <div class="employee_card d-flex justify-content-between">
+<% if !users.count.negative? %>
 
-    <div class="employee_avatar">
-      <% if user.photo.attached? %>
-        <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill, class: "rounded-circle" %>
-      <% else %>
-        <%= image_tag "bee", height: 120, width: 120, class: "rounded-circle" %>
-      <% end %>
-    </div>
+  <% users.each do |user| %>
+     
+    <div class="employee-card">
 
-    <div class = "rank_tag">
-      <% if user.admin == true %>
-        <p>Admin</p>
-      <% else %>
-       <p>Employee</p>
+      <div class="content">
+        <div class="avatar-container">
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill, class: "rounded-circle" %>
+          <% else %>
+            <%= image_tag "bee", height: 120, width: 120, class: "rounded-circle" %>
+          <% end %>
+        </div>
+
+        <div class="info-container">
+          <p><%= user.first_name %></p>
+          <p><%= user.last_name %></p>
+          <p class="tasks"><%= pluralize user.tasks.size, "task" %> assigned</p> 
+          <% if user.admin == true %>
+            <p>Admin</p>
+          <% else %>
+            <p>Employee</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <%= link_to employee_path(user), class: "button button-purple" do %>
+            Go to employee
         <% end %>
-     </div>
+      </div>
 
-    <div class="employee_name">
-      <p><%= user.first_name %></p>
-      <p><%= user.last_name %></p>
     </div>
 
-    <%# <div class="employee icon">
-      <%= image_tag "icon index users", height: 80, width: 80 %>
-    <%# </div> %>
+  <% end %>
 
-  </div>
-<% end %>
+ <% end %>
+
+
 
 <%# SO... QUESTIONS
 1 DOES IT MAKE SENCE TO USE GRID INSTEAD OF FLEXBOX
