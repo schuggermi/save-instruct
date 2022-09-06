@@ -1,6 +1,6 @@
-<div data-controller="edit-step" class="card pt-3 my-3" id="<%= counter %>">
-  <div class="ps-2">
-  <%= render "steps/steps_info", step: step %>
+<div data-controller="edit-step" class="step-card shadow-md" id="<%= counter %>">
+  <div>
+    <%= render "steps/steps_info", step: step %>
     <%= render "steps/edit", task: step.task, step: step %>
   </div>
 </div>

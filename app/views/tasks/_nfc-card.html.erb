@@ -1,6 +1,21 @@
-<li class="card p-2">
-  <p>Position: <%= nfc.position %></p>
-  <p>Serial number: <%= nfc.serial_number %></p>
-  <p>Created: <%= nfc.created_at %></p>
-  <%= link_to 'Remove from Task', task_nfc_path(task, nfc), class: "text-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<li class="nfc-card">
+  <div class="row">
+    <div class="col-6 d-flex justify-content-start align-items-center">
+      <p class="mb-1"><%= fa_icon "map-pin" %> <span class="fw-bold"><%= nfc.position %></span></p>
+    </div>
+
+    <div class="col-6 d-flex justify-content-end">
+      <%= link_to task_nfc_path(task, nfc), class: "button-badge", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+        <%= fa_icon "trash" %>
+      <% end %>
+    </div>
+
+    <div class="col-12 d-flex justify-content-start align-items-center">
+      <p class="mb-1"><%= fa_icon "microchip" %> <span class="fw-bold"><%= nfc.serial_number %></span></p>
+    </div>
+
+    <div class="col-12">
+      <p class="mb-1"><%= fa_icon "calendar" %> <span class="fw-bold"><%= nfc.created_at %></span></p>
+    </div>
+  </div>
 </li>
