@@ -8,6 +8,7 @@ export default class extends Controller {
   }
 
   connect() {
+    this.setMessage("Scan the NFC Tag you would like to assign.", 0)
   }
 
   async scanNewNfc() {
@@ -20,6 +21,7 @@ export default class extends Controller {
         this.setMessage("Scan for NFC started successfully.", 1);
         ndef.onreadingerror = () => {
           this.setMessage("Cannot read data from the NFC tag. Try another one.", 0);
+          this.retry();
         };
 
         ndef.onreading = (event) => {
@@ -34,6 +36,7 @@ export default class extends Controller {
         }
       } catch (error) {
         this.setMessage(`Error! Scan failed to start: ${error}.`, 0);
+        this.retry();
       }
     } else {
       this.setMessage("No NDEFReader is availiable in browser. Change to Mobile device...", 0);
@@ -55,13 +58,23 @@ export default class extends Controller {
 
         ndef.onwritingerror = () => {
           this.setMessage("Cannot write data to the NFC tag. Try another one.", 0);
+          this.retry();
         };
       } catch (error) {
         this.setMessage(`Error! Writing failed: ${error}.`, 0);
+        this.retry();
       }
     } else {
       this.setMessage("No NDEFReader is availiable in browser. Change to Mobile device...", 0);
+      this.retry();
     }
+  }
+
+  retry() {
+    setTimeout(2)
+    this.writeTarget.classList.add("d-none");
+    this.scanTarget.classList.remove("d-none");
+    this.setMessage("Try again by scanning the NFC Tag.", 0)
   }
 
   setMessage(message, type) {
