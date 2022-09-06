@@ -9,8 +9,12 @@
     <% end %>
 
     <%= simple_form_for [@task, @employee_task] do |f| %>
-      <%= f.submit "Done", class: "btn btn-success w-100 mt-4" %>
+      <%= f.submit "Done", class: "btn btn-success w-100 mt-4 mb-3" %>
       <ul class="list-style-none w-75 mx-auto my-5">
+        <li class="d-flex list-unstyled justify-content-end align-items-center">
+          <label for="checker">Select all</label>
+          <input type="checkbox" class="ms-2" id="checker" data-controller="select-all" data-select-all-target="checkbox" data-action="change->select-all#update">
+        </li>
         <% @employees.each_with_index do |employee, index| %>
           <% next if employee.admin? %>
           <% if index > 0 && index < @employees.count %>
@@ -26,7 +30,7 @@
               <%= employee.first_name %> <%= employee.last_name %>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-              <%= check_box_tag "user_ids[]", employee.id, @task.employee_tasks.map { |et| et.user.id }.include?(employee.id) %>
+              <%= check_box_tag "user_ids[]", employee.id, @task.employee_tasks.map { |et| et.user.id }.include?(employee.id), class: "employee-checker" %>
             </div>
           </li>
         <% end %>
