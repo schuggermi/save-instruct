@@ -13,8 +13,8 @@ export default class extends Controller {
     <div data-controller="edit-step" class="card pt-3 my-3" id="1">
   <div class="ps-2">
   <div class="px-3" style="line-height: 0.8" data-edit-step-target="infos">
-    <p class="d-flex justify-content-between"><i data-action="click->edit-step#display" class="fa fa-pencil fa-1x text-danger"></i></p>
-  <p class="text-warning"></p>
+    <p class="d-flex justify-content-between">Open the waste water tap <i data-action="click->edit-step#display" class="fa fa-pencil fa-1x text-danger"></i></p>
+  <p class="text-warning">There is only one waster water tap for all tubs</p>
 </div>
 
 

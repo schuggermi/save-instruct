@@ -1,33 +1,29 @@
-<div data-controller="search-tasks">
-    <div class="search-container" data-action="click->search-tasks#DisplaySearchForm">
+<div data-controller="search-items">
+    <div class="search-container" data-action="click->search-items#displaySearchForm">
       <h1>Tasks</h1>
       <div class="search-icon">
         <%= image_tag "ui-icons/magnifying-glass-solid.svg" %>
       </div>
     </div>
 
-    <div data-search-tasks-target="form" class="search-form">
-       <%= form_with url: tasks_path, method: :get, class: "d-flex flex-column" do %>
+    <div class="">
+       <%= form_with url: tasks_path, method: :get, html: {class: "search-form mb-4", data: {search_items_target: "form"}} do %>
         <%= text_field_tag :query,
-          params[:query],
-          placeholder: "Find a task" %>
-        <%= submit_tag "Search", class: "button button-outline-purple" %>
+        params[:query],
+        class: "form-control",
+        placeholder: "Type your task search here",
+        data: {search_items_target: "input",
+        action: "keyup->search-items#search"}
+        %>
       <% end %>
     </div>
 
-  <% if current_user.admin? %>
-    <% @tasks.each do |task| %>
-      <%= render "task-card", task: task %>
-    <% end %>
-  <% else %>
-    <%# <% if current_user.visits.count == 1 %>
-      <%# <div class="my-5"> %>
-        <%# <%= render :template => 'devise/passwords/edit', locals: { resource: User.find(current_user.id), resource_name: "user" } %>
-      <%# </div> %>
-    <%# <% else %>
-    <% @employee_tasks.each do |task| %>
-      <%= render "task-card", task: task %>
-    <% end %>
-    <%# <% end %>
-  <% end %>
+    <div data-search-items-target="content">
+      <% if current_user.admin? %>
+        <%= render "task-card", tasks: @tasks %>
+      <% else %>
+        <%= render "task-card", tasks: @employee_tasks %>
+      <% end %>
+    </div>
+
 </div>

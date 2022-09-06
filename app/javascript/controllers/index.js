@@ -30,3 +30,9 @@ application.register("search-tasks", SearchTasksController)
 
 import NestedForm from 'stimulus-rails-nested-form'
 application.register('nested-form', NestedForm)
+
+import SearchItemsController from "./search_items_controller"
+application.register("search-items", SearchItemsController)
+
+import SelectAllController from "./select_all_controller"
+application.register("select-all", SelectAllController)
