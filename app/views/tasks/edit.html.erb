@@ -1,7 +1,11 @@
+<div class = "container">
+<h1> EDIT TASK </h1>
 <%= simple_form_for @task do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.submit %>
+  <br>
+  <%= f.submit class: "button button-orange mt-4" %>
 <% end %>
 
-<%= button_to "Delete task", @task, method: :delete, class: "btn btn-danger mt-2" %>
+<%= button_to "Delete task", @task, method: :delete, class: "button button-outline-purple mt-4" %>
+</div>
