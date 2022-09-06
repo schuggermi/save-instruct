@@ -19,14 +19,11 @@ application.register("mark-done", MarkDoneController)
 import NfcController from "./nfc_controller"
 application.register("nfc", NfcController)
 
-import NestedForm from 'stimulus-rails-nested-form'
-application.register('nested-form', NestedForm)
-
-import Sortable from 'stimulus-sortable'
-application.register('sortable', Sortable)
-
 import OrderByDragController from "./order_by_drag_controller"
 application.register("order-by-drag", OrderByDragController)
 
 import SearchItemsController from "./search_items_controller"
 application.register("search-items", SearchItemsController)
+
+import SelectAllController from "./select_all_controller"
+application.register("select-all", SelectAllController)

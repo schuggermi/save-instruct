@@ -15,8 +15,8 @@
   </div>
   <div>
     <p>Hold the potato in one hand and the peeler in your other hand. Stand at the sink or over the garbage before you go to peel your potato. This way you don’t end up with bits of potato skin all over your kitchen. There are two generic "shapes" potato peelers; here's how to hold each one:
-If you have a standard long potato peeler, hold it like a paint roller, with your thumb balancing it in your fingers, but still away from the blade.
-If you have a Y-shaped potato peeler, hold it like a pencil. This way is more efficient, and you’re less likely to hurt yourself. It should be resting between your middle finger and thumb (of your dominant hand), with your pointer finger holding it in position.</p>
+      If you have a standard long potato peeler, hold it like a paint roller, with your thumb balancing it in your fingers, but still away from the blade.
+      If you have a Y-shaped potato peeler, hold it like a pencil. This way is more efficient, and you’re less likely to hurt yourself. It should be resting between your middle finger and thumb (of your dominant hand), with your pointer finger holding it in position.</p>
   </div>
 
   <h2> Tasks list </h2>
@@ -25,16 +25,11 @@ If you have a Y-shaped potato peeler, hold it like a pencil. This way is more ef
       <% @user.employee_tasks.each do |employee_task| %>
         <%= render "tasks/task-card", task: employee_task.task %>
       <% end %>
-  <%# </div>
-  <%= link_to 'Edit Information', employees_path, class: "btn btn-dark"%>
-  <%# </div> %>
-</div>
+  </div>
 
-<%# 1 I need to establish all the conections between user show and user index
-    2 I have to connect to edit method... which I belive is not done yet.
-    3 I have to create an h1 which, responsding to the user id, will interpolate
-    and display the user first and last names.
-    4 I have to display the avatar, the same way I did in index (easy)
-    5 make a <p> with some content... whatever that´s supposed to be
-    6 make and unorder list and interpolate with assigned tasks (not entirely sure
-    about this one)%>
+  <div>
+    <% if current_user.admin == true %>
+     <%=link_to 'Edit Information', edit_employee_path(@user), class: "btn btn-primary"%>
+     <% end %>
+   </div>
+</div>

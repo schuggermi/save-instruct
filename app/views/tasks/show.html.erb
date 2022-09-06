@@ -6,7 +6,7 @@
   </div>
 
   <% if current_user.admin? %>
-    <%= render 'task-show-card-manager', task: @task %>
+    <%= render 'task-show-card-manager', { task: @task, step: @step } %>
   <% else %>
     <%= render 'task-show-card-employee', task: @task %>
   <% end %>

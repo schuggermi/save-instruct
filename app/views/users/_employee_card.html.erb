@@ -17,6 +17,11 @@
           <p><%= user.first_name %></p>
           <p><%= user.last_name %></p>
           <p class="tasks"><%= pluralize user.tasks.size, "task" %> assigned</p> 
+          <% if user.admin == true %>
+            <p>Admin</p>
+          <% else %>
+            <p>Employee</p>
+          <% end %>
         </div>
       </div>
 
