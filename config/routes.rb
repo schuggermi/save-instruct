@@ -25,10 +25,9 @@ Rails.application.routes.draw do
   get "employees", to: "users#index"
   get "employees/:id", to: "users#show", as: :employee
   get "employees/:id/edit", to: "users#edit", as: "edit_employee"
-  patch "employees/:id", to: "employees#update"
-
+  patch "employees/:id", to: "users#update", as: "employee_update"
+  delete "employee/:id", to: "users#destroy", as: "employee_destroy"
 
   get "/404", to: "errors#not_found", via: :all
   get "/500", to: "errors#internal_server_error", via: :all
 end
-
