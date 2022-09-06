@@ -1,5 +1,5 @@
-
-<h2>Edit <%= @user.first_name %> Profile</h2>
+<div class = "container">
+<h2>Edit <%= @user.first_name %>´s Profile</h2>
 
 <%= simple_form_for(@user, as: "user", url: employee_update_path(@user), html: { method: :patch }) do |f| %>
   <%= f.error_notification %>
@@ -15,11 +15,22 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %> <%#is this button or should it be submit%>
+    <%= f.button :submit, "Update", class: "button button-orange mt-4"%>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", employee_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<%= link_to "Delete Profile", employee_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "button button-outline-purple mt-4" %>
 <%= link_to "Back", employee_path %>
+</div>
+
+<%# <div class = "container">
+<h1> EDIT TASK </h1>
+<%= simple_form_for @task do |f| %>
+  <%# <%= f.input :name %>
+  <%# <%= f.input :description %>
+  <%# <br>
+  <%= f.submit class: "button button-orange mt-4" %>
+<%# <% end %>
+
+<%# <%= button_to "Delete task", @task, method: :delete, class: "button button-outline-purple mt-4" %>
+<%# </div> %>
