@@ -1,6 +1,7 @@
 .avatar {
   width: 40px;
   border-radius: 50%;
+  filter: drop-shadow(0.1rem 0.15rem 0.05rem $dark);
 }
 .avatar-large {
   width: 56px;

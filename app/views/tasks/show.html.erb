@@ -1,10 +1,11 @@
 <div class="container-fluid">
-  <h1 class="text-center fw-bold fs-2"><%= @task.name %></h1>
+  <h1 class="text-center fw-bold fs-3"><%= @task.name %></h1>
 
-  <div class="my-4">
-    <%= link_to 'Back', tasks_path, class: "button button-outline-purple w-25" %>
-  </div>
  <% if current_user.admin? %>
+    <%= link_to 'Edit task', edit_task_path(@task), class: "button button-outline-orange" %>
+    <div class="mt-2 mb-4">
+      <%= link_to 'Back', tasks_path, class: "button button-outline-purple w-25" %>
+    </div>
     <%= render 'task-show-card-manager', locals:{task: @task, step: @step} %>
   <% else %>
     <%= render 'task-show-card-employee', task: @task %>
