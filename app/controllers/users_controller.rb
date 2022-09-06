@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to employees_path, status: :see_other, notice: "this person has been fired, or eaten by sharks"
+    redirect_to employees_path, status: :see_other, notice: "this person has been either fired or eaten by sharks"
   end
 
   private

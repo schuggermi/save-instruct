@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       new: 'update'
     }
   end
-    # resources :users, only: [:index, :show, :edit, :update, :destroy]
+  
   get "employees", to: "users#index"
   get "employees/:id", to: "users#show", as: :employee
   get "employees/:id/edit", to: "users#edit", as: "edit_employee"
