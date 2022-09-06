@@ -1,8 +1,8 @@
 <div class="container-fluid">
-  <h1 class="text-center fw-bold"><%= @task.name %></h1>
+  <h1 class="text-center fw-bold fs-2"><%= @task.name %></h1>
 
   <div class="my-4">
-    <%= link_to 'All tasks', tasks_path, class: "button button-purple" %>
+    <%= link_to 'Back', tasks_path, class: "button button-outline-purple w-25" %>
   </div>
  <% if current_user.admin? %>
     <%= render 'task-show-card-manager', locals:{task: @task, step: @step} %>

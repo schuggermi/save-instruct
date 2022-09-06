@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user && current_user.admin?
       super
     else
-      redirect_to root_path, notice: "You don't have the permissions."
+      redirect_to root_path, notice: "You don't have permission to access this file."
     end
   end
 
