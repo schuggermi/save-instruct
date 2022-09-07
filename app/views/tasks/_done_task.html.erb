@@ -1,4 +1,4 @@
-<div>
-  <p>task is done!</p>
-  <p> <%= employee_task.task_done %> </p>
+<div class="text-center rotate-center p-3">
+  <i class="fa-solid fa-circle-check fs-1 text-success"></i>
+  <p class="fw-bold">Task was done on <%= employee_task.task_done.strftime("%Y-%m-%d") %></p>
 </div>
