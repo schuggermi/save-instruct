@@ -1,0 +1,48 @@
+<div>
+  <%= link_to 'All Employees', employees_path, class: "btn btn-dark"%>
+</div>
+
+<div class="container-fluid profile-container">
+
+  <h1 class="text-center"><%= @user.first_name %> <%= @user.last_name %></h1>
+
+  <div class="profile_avatar">
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill, class: "rounded-circle" %>
+      <% else %>
+        <%= image_tag "bee", height: 120, width: 120, class: "rounded-circle" %>
+    <% end %>
+  </div>
+
+  <p class="label">Rank: <span class="info"><%= @user.rank %></span></p>
+  <p class="label">Admin: <span class="info">
+    <% if @user.admin? %> 
+    <%= "Yes" %> 
+    <% else %> 
+    <%= "No" %> 
+    <% end %>
+  </span></p>
+  <p class="label">Email: <span class="info"><%= @user.email %></span></p>
+
+  <h2> Tasks </h2>
+
+  <% if @user.employee_tasks.count > 0 %>
+    <div>
+        <%= render "tasks/task-card-employee", employee_tasks: @user.employee_tasks %>
+    </div>
+  <% else %>
+    <p class="text-center">No tasks assigned</p>
+  <% end %>
+
+  <div>
+    <% if current_user.admin == true %>
+     <%=link_to 'Edit Employee Profile', edit_employee_path(@user), class: "button button-purple"%>
+    <% end %>
+   </div>
+
+  <div>
+    <% if current_user.admin == true %>
+      <%= link_to 'Delete employee', employee_destroy_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "button button-outline-purple" %>
+    <% end %>
+  </div>
+</div>
