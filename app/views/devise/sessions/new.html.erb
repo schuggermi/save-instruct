@@ -2,7 +2,7 @@
 
   <div class="container d-flex flex-column align-items-between">
     <h1>
-      <%= image_tag "chemical-company-logo-full-black-orange.svg", class: "full-logo", alt: "Chemical Company logo." %>
+      <%= image_tag "chemical-company-logo-full-black-orange.svg", class: "full-logo mt-4", alt: "Chemical Company logo." %>
     </h1>
 
     <h2>Welcome</h2>
@@ -26,13 +26,12 @@
     <% end %>
 
     <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-      <%= link_to "Forgot your password?", new_password_path(resource_name), class: "link" %><br />
+      <%= link_to "Forgot your password?", new_password_path(resource_name), class: "button button-outline-purple" %><br />
     <% end %>
-
   </div>
 
-  <div class="row justify-content-center mt-5 mb-3">
-      <%= image_tag 'save-instruct-logo-powered-by.svg', class: "col-8 col-md-4 col-lg-3" %>
+  <div class="navbar-fixed-bottom text-center mb-2">
+    <%= image_tag 'save-instruct-logo-powered-by.svg', width: 180 %>
   </div>
 
 </div>

@@ -29,7 +29,7 @@
         <% counter += 1 %>
       <% end %>
     </ul>
-    <button class="button button-outline-orange" data-action="click->add-step#addStep" type="button">New Step</button>
+    <button class="button button-outline-orange" data-action="click->add-step#addStep" type="button">Add Instruction</button>
     <div data-add-step-target="list" class="d-none">
       <%= simple_form_for [@task, @step] do |f| %>
         <%= f.input :instruction %>

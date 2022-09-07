@@ -23,7 +23,7 @@
         <% status = "Pending" %>
       <% end %>
 
-      <p class="status"><span>Status:</span> <%= status %> <span class="status-icon <%= class_color %>"></span></p>
+      <p class="status"><span>Status: </span><%= status %> <span class="status-icon <%= class_color %>"></span></p>
 
       <div>
         <%= link_to task_path(employee.task), class: "button button-outline-purple" do %>

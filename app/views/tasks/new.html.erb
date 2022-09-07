@@ -10,7 +10,7 @@
   <%= f.input :name %>
   <%= f.input :description %>
 
-  <h2 class="my-4">Define Steps</h1>
+  <h2 class="my-4">Instructions</h1>
       <%= f.simple_fields_for :steps, @task.steps do |t| %>
       <%= render "steps/new", s: t, template: false %>
     <% end %>
