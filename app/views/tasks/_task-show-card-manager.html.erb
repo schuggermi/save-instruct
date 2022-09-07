@@ -34,7 +34,7 @@
       <%= simple_form_for [@task, @step] do |f| %>
         <%= f.input :instruction %>
         <%= f.input :info %>
-        <%= f.button :submit %>
+        <%= f.button :submit, class: "button button-outline-black" %>
       <% end %>
     </div>
   </div>

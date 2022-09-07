@@ -45,6 +45,7 @@ textarea.form-control {
   border: 2px solid $purple;
   border-radius: 5px;
   padding: 12px;
+  margin-bottom: 20px;
 
   .remove-step {
     display: flex;
@@ -52,8 +53,8 @@ textarea.form-control {
     justify-content: space-between;
 
     button {
-      margin-bottom: 1rem !important;
-      margin-left: 20px;
+      // margin-bottom: 1rem !important;
+      margin-left: 50%;
     }
   }
 }
