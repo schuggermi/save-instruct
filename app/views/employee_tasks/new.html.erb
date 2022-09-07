@@ -1,11 +1,16 @@
 <div class="container" data-controller="search-items">
 
-  <div class="search-container" data-action="click->search-items#displaySearchForm">
-    <h1 class="text-center fs-2 w-75">Add / Remove Employees</h1>
+<div class="d-flex justify-content-between align-items-center">
+  <%= link_to task_path(@task) do %>
     <div class="button-outline-badge">
-      <%= fa_icon "magnifying-glass" %>
+      <%= image_tag "ui-icons/arrow-left-solid.svg", width: 20, height: 20 %>
     </div>
+  <% end %>
+  <h1 class="text-center">Add / Remove Employees</h1>
+  <div class="button-outline-badge search-container" data-action="click->search-items#displaySearchForm">
+    <%= image_tag "ui-icons/magnifying-glass-solid.svg", width: 20, height: 20 %>
   </div>
+</div>
 
   <div>
     <%= form_with url: new_task_employee_task_path(@task), method: :get, html: {class: "search-form mb-4", data: {search_items_target: "form"}} do %>

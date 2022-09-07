@@ -16,9 +16,9 @@
     <% end %>
   </div>
 
-  <div class="text-start">
-    <p>Rank/Jobtitle: <span class="ps-3"><%= @user.rank %></span></p>
-    <p>Email: <span class="ps-3"><%= @user.email %></span></p>
+  <div>
+    <p class="d-flex justify-content-between">Rank/Jobtitle: <span class="ps-3"><%= @user.rank %></span></p>
+    <p class="d-flex justify-content-between">Email: <span class="ps-3"><%= @user.email %></span></p>
     <% if @user.admin? %>
       <p class="text-danger">Admin</p>
     <% end %>
