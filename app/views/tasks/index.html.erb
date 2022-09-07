@@ -1,20 +1,24 @@
 <div data-controller="search-items">
-    <div class="search-container" data-action="click->search-items#displaySearchForm">
+    <div class="d-flex justify-content-between align-items-center">
+      <%= link_to root_path do %>
+        <div class="button-outline-badge">
+          <%= image_tag "ui-icons/arrow-left-solid.svg", width: 20, height: 20 %>
+        </div>
+      <% end %>
       <h1>Tasks</h1>
-      <div class="button-outline-badge">
-        <%= fa_icon "magnifying-glass" %>
+      <div class="button-outline-badge search-container" data-action="click->search-items#displaySearchForm">
+        <%= image_tag "ui-icons/magnifying-glass-solid.svg", width: 20, height: 20 %>
       </div>
     </div>
 
-    <div class="">
+    <div>
        <%= form_with url: tasks_path, method: :get, html: {class: "search-form mb-4", data: {search_items_target: "form"}} do %>
         <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Type your task search here",
-        data: {search_items_target: "input",
-        action: "keyup->search-items#search"}
-        %>
+          params[:query],
+          class: "form-control",
+          placeholder: "Type your task search here",
+          data: {search_items_target: "input",
+          action: "keyup->search-items#search"} %>
       <% end %>
     </div>
 
@@ -25,5 +29,4 @@
         <%= render "task-card", tasks: @employee_tasks %>
       <% end %>
     </div>
-
 </div>

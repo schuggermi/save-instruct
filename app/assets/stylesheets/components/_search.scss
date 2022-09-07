@@ -6,7 +6,7 @@
     flex-grow: 1;
   }
 
-  .search-icon {
+  .icon {
     border: 2px solid $orange;
     border-radius: 50%;
     height: 40px;
@@ -14,7 +14,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
     img {
       width: 24px;
     }
@@ -24,7 +24,7 @@
 
 .search-form {
   display: none;
-  
+
   input:first-child {
     border: 1px solid black;
     border-radius: 5px;

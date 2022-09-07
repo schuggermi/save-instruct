@@ -1,4 +1,4 @@
-<h2>New employee</h2>
+<h2 class="my-4">New employee</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
   data: {turbo: false}) do |f| %>
@@ -12,7 +12,7 @@
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :rank %>
-    <%= f.input :admin, label: "Set employee as Admin" %>
+    <%= f.input :admin, label: "Set employee as Admin", class: "checkbox" %>
     <%= f.input :photo, as: :file %>
     <%= f.input :password,
                 required: true,
@@ -24,6 +24,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Create Employee", class: "button button-orange" %>
+    <%= f.button :submit, "Create Employee", class: "button button-orange mt-4" %>
   </div>
 <% end %>
+
+<%= link_to "Cancel", root_path, class: "button button-outline-purple mt-4" %>
