@@ -4,10 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["form", "content", "input"];
 
-  // connect() {
-  //   console.log("Hello form search items controller");
-  // }
-
   displaySearchForm() {
     this.formTarget.classList.toggle("display-form");
     this.inputTarget.focus()

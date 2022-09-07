@@ -11,14 +11,14 @@ class User < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_employee,
-  against: [ :first_name, :last_name, :rank ],
-  associated_against: {
-    tasks: [ :name, :description ]
-    }, using: {
-    tsearch: { prefix: true }
-  }
+                  against: %i[first_name last_name rank],
+                  associated_against: {
+                    tasks: %i[name description]
+                  }, using: {
+                    tsearch: { prefix: true }
+                  }
 
   def admin?
-    self.admin == true
+    admin == true
   end
 end

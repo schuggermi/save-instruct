@@ -16,14 +16,3 @@ export default class extends Controller {
     }
   }
 }
-
-// const url = this.listTarget.action
-// fetch(url, {
-//   method: "PATCH",
-//   headers: { "Accept": "text/plain" },
-//   body: new FormData(this.listTarget)
-// })
-// .then(response => response.text())
-// .then((data) => {
-//   this.infosTarget.outerHTML = data
-// })
