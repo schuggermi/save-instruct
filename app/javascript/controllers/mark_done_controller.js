@@ -4,6 +4,11 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["form"]
 
+  connect() {
+    // console.log("hello from mark done controller");
+    console.log("2")
+  }
+
   update(event) {
     event.preventDefault();
 
@@ -28,7 +33,7 @@ export default class extends Controller {
         var randomHeight =  Math.floor(Math.random() * Math.max(document.documentElement.clientHeight, window.innerHeight || 500));
 
         // Random animation-delay
-        var randomAnimationDelay = Math.floor(Math.random() * 3);
+        var randomAnimationDelay = Math.floor(Math.random() * 15);
 
         // Random colors
         var colors = ['#f49918', '#a1a9da', '#1edd87'];
