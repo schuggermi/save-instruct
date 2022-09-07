@@ -21,7 +21,6 @@ export default class extends Controller {
 
         this.setMessage("Scan for NFC started successfully.", 1);
         ndef.onreadingerror = () => {
-          this.setMessage("Cannot read data from the NFC tag. Try another one.", 0);
           this.retry();
         };
 
@@ -37,11 +36,10 @@ export default class extends Controller {
           this.scanTarget.classList.add("d-none");
         }
       } catch (error) {
-        this.setMessage(`Error! Scan failed to start: ${error}.`, 0);
         this.retry();
       }
     } else {
-      this.setMessage("No NDEFReader is availiable in browser. Change to Mobile device...", 0);
+      this.setMessage("No NDEFReader is availiable in the browser. Change to mobile devise Chrome/Android", 0);
     }
   }
 
@@ -56,31 +54,27 @@ export default class extends Controller {
           this.setMessage("Writing to NFC was successfully.");
           this.spinnerWriteTarget.classList.add("d-none");
           this.writeTarget.classList.add("d-none");
-          setTimeout(function() {
-            this.setMessage("Please type in the Position and create NFC.")
-          }, 2000);
+          this.setMessage("Please type in the Position and create NFC.")
         }).catch(error => {
-          this.setMessage(error, 0);
+          this.retry();
         });
 
         ndef.onwritingerror = () => {
           this.setMessage("Cannot write data to the NFC tag. Try another one.", 0);
+          this.retry();
         };
       } catch (error) {
-        this.setMessage(`Error! Writing failed: ${error}.`, 0);
         this.retry();
       }
     } else {
-      this.setMessage("No NDEFReader is availiable in browser. Change to Mobile device...", 0);
+      this.setMessage("No NDEFReader is availiable in the browser. Change to mobile devise Chrome/Android", 0);
     }
   }
 
   retry() {
-    setTimeout(function() {
-      this.writeTarget.classList.add("d-none");
-      this.scanTarget.classList.remove("d-none");
-      this.setMessage("Try again by scanning the NFC Tag.", 0)
-    }, 2000);
+    this.writeTarget.classList.add("d-none");
+    this.scanTarget.classList.remove("d-none");
+    this.setMessage("Try again by scanning the NFC Tag.", 0);
   }
 
   setMessage(message, type) {

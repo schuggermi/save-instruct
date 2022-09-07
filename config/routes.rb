@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root to: "pages#dashboard"
 
   resources :tasks do
-    resources :nfcs, only: [:index, :new, :create, :destroy]
+    resources :nfcs, only: [:new, :create, :destroy]
     resources :steps, only: [:add, :create, :update, :destroy, :show] do
       member do
         get :move
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       new: 'update'
     }
   end
-  
+
   get "employees", to: "users#index"
   get "employees/:id", to: "users#show", as: :employee
   get "employees/:id/edit", to: "users#edit", as: "edit_employee"

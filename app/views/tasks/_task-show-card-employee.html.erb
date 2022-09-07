@@ -1,14 +1,22 @@
-<div class="card p-2">
+<div class="p-2">
   <div>
-    <h3 class="fw-bold">Description</h3>
+    <h3 class="fw-bold mb-2">Description</h3>
     <p><%= task.description %></p>
   </div>
 
   <div>
-    <h3 class="fw-bold">Instruction Steps</h3>
-    <% @task.steps.each do |step| %>
-      <%= render 'steps/steps_info', step: step %>
+    <h3 class="fw-bold mb-2">Instruction Steps</h3>
+    <ol>
+      <% @steps.each do |step| %>
+        <li>
+        <span class="fw-bold"><%= step.instruction %></span>
+          <br>
+          Details: <%= step.info %>
+          <%# <%= step.order %>
+        </li>
     <% end %>
+    </ol>
+    
   </div>
 
   <% if @my_employee_tasks.first.task_done? && @my_employee_tasks.first.task_done.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d") %>
@@ -17,10 +25,12 @@
 
   <% else %>
 
+    <div id="confetti-wrapper"></div>
+
     <div data-controller="mark-done">
 
       <%= simple_form_for @task,
-      url: "/tasks/#{@task.id}/employee_tasks/#{@my_employee_tasks.first.id}",
+      url: "/tasks/#{@task.id}/assigned-employees/#{@my_employee_tasks.first.id}",
       html: {
         data: {
           mark_done_target: "form",

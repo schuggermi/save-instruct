@@ -19,8 +19,45 @@ export default class extends Controller {
     })
     .then(response => response.text())
     .then((data) => {
-      console.log(data)
+
       this.formTarget.outerHTML = data
+
+      for(var i=0; i<100; i++) {
+        // Random rotation
+        var randomRotation = Math.floor(Math.random() * 360);
+          // Random Scale
+        var randomScale = Math.random() * 1;
+        // Random width & height between 0 and viewport
+        var randomWidth = Math.floor(Math.random() * Math.max(document.documentElement.clientWidth, window.innerWidth || 0));
+        var randomHeight =  Math.floor(Math.random() * Math.max(document.documentElement.clientHeight, window.innerHeight || 500));
+        
+        // Random animation-delay
+        var randomAnimationDelay = Math.floor(Math.random() * 3);
+        // var randomAnimationDelay = 2;
+        // console.log(randomAnimationDelay);
+      
+        // Random colors
+        var colors = ['#f49918', '#a1a9da', '#1edd87'];
+        var randomColor = colors[Math.floor(Math.random() * colors.length)];
+      
+        // Create confetti piece
+        var confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.top=randomHeight + 'px';
+        confetti.style.right=randomWidth + 'px';
+        confetti.style.backgroundColor=randomColor;
+        // confetti.style.transform='scale(' + randomScale + ')';
+        confetti.style.obacity=randomScale;
+        confetti.style.transform='skew(15deg) rotate(' + randomRotation + 'deg)';
+        confetti.style.animationDelay=randomAnimationDelay + 's';
+        document.getElementById("confetti-wrapper").appendChild(confetti);
+      }
+
+      setTimeout(() => {
+        let confettiWrapper = document.getElementById("confetti-wrapper");
+        confettiWrapper.remove();
+      }, "1000")
+
     })
   }
 }

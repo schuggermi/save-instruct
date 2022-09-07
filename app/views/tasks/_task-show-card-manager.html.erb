@@ -4,10 +4,11 @@
   }
 </style>
 
-<div class="task-card" data-controller="toggle-sortable">
-  <div>
+<div class="" data-controller="toggle-sortable">
+  <div class="mb-5">
     <h3 class="fw-bold mb-3">Description</h3>
     <p><%= @task.description %></p>
+    <%= link_to 'Edit task', edit_task_path(@task), class: "button button-outline-orange" %>
   </div>
 
   <div data-controller="add-step" class="mt-4 mb-5">
@@ -50,7 +51,7 @@
     </ul>
   </div>
 
-  <%= link_to 'Assign NFC Tag', new_task_nfc_path(@task), class: "button button-outline-orange" %>
+  <%= link_to 'Assign NFC Tag', new_task_nfc_path(@task), class: "button button-outline-orange mb-5" %>
 
   <div class="my-4">
     <h3 class="fw-bold">Assigned Employees</h3>
@@ -69,5 +70,5 @@
       <% end %>
     </ul>
   </div>
-  <%= link_to 'Add/Remove employee', new_task_employee_task_path(@task), class: "button button-outline-purple" %>
+  <%= link_to 'Add/Remove employee', new_task_employee_task_path(@task), class: "button button-outline-orange mb-5" %>
 </div>
