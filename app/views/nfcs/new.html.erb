@@ -1,13 +1,11 @@
 <div class="container-fluid">
-  <h1 class="text-center mb-5">Add NFC Chip to <%= @task.name %></h1>
+  <h1 class="text-center my-4">Create NFC Tag</h1>
 
-  <%= link_to 'Cancel', task_path(@task), class: "button button-purple" %>
-
-  <div class="card p-2 mt-4" data-controller="nfc" data-nfc-task-value="<%= @task.id %>">
-    <p class="text-center my-2" data-nfc-target="scanMessage"></p>
+  <div class="p-2 mt-4" data-controller="nfc" data-nfc-task-value="<%= @task.id %>">
+    <p class="alert-nfc text-center mb-3 py-2 px-3" data-nfc-target="scanMessage"></p>
 
     <%# <%= button_to "Scan NFC", { nfc_target: "scan", action: "click->nfc#scanNewNfc" }, { class: "button button-orange" } %>
-    <button class="button button-orange d-flex align-items-center" data-nfc-target="scan" data-action="click->nfc#scanNewNfc">
+    <button class="button button-purple d-flex align-items-center" data-nfc-target="scan" data-action="click->nfc#scanNewNfc">
         Scan NFC
         <svg class="spinner ms-3 d-none" data-nfc-target="spinnerScan" width="20px" height="20px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
           <circle class="path" fill="none" stroke-width="8" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
@@ -25,8 +23,9 @@
         <%= f.hidden_field :url %>
         <%= f.input :serial_number, readonly: true, error: "Scan the NFC first." %>
         <%= f.input :position, error: "NFC must have a postion." %>
-        <%= f.submit class: "button button-purple w-100" %>
+        <%= f.submit class: "button button-orange w-100" %>
       <% end %>
     </div>
   </div>
+  <%= link_to 'Cancel', task_path(@task), class: "button button-outline-purple mt-4" %>
 </div>
