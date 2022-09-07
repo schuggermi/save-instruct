@@ -2,12 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit destroy update]
 
   def index
-    @users = User.all
+    # @users = User.all
 
     if params[:query].present?
-      @users = User.search_employee(params[:query])
+      @users = User.order('lower(first_name)').search_employee(params[:query])
     else
-      @users = User.all
+      @users = User.order('lower(first_name)').all
     end
 
     respond_to do |format|
@@ -43,6 +43,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :rank, :username, :email, :photo)
+    params.require(:user).permit(:first_name, :last_name, :rank, :username, :email, :photo, :admin)
   end
 end
