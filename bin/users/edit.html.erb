@@ -1,0 +1,27 @@
+<div class = "container">
+  <h2>Edit <%= @user.first_name %>´s Profile</h2>
+  <div><%= image_tag "back-button.png", height: 50, width: 50 %><%= link_to "Back to Profile", employee_path %>
+  </div>
+  <br>
+
+  <%= simple_form_for(@user, as: "user", url: employee_update_path(@user), html: { method: :patch }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true %>
+
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :rank %>
+      <%= f.input :photo, as: :file %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Update", class: "button button-orange mt-4"%>
+    </div>
+  <% end %>
+
+  <%= link_to "Delete Profile", employee_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "button button-outline-purple mt-4" %>
+  <%= link_to "Back", employee_path %>
+</div>
+
