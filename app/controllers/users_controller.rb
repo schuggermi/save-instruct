@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :destroy, :update]
-  # in theory any of the actions associated with this controller will only be
-  # available to the manager, it will only go through the managers journey so
-  # authentication shant be necessary
+  before_action :set_user, only: %i[show edit destroy update]
 
   def index
     @users = User.all

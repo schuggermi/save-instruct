@@ -10,7 +10,7 @@ class TasksController < ApplicationController
       end
 
       respond_to do |format|
-        format.html # Follow regular flow of Rails
+        format.html
         format.text { render partial: "tasks/task-card", locals: { tasks: @tasks }, formats: [:html] }
       end
 
@@ -36,12 +36,11 @@ class TasksController < ApplicationController
       end
 
       respond_to do |format|
-        format.html # Follow regular flow of Rails
+        format.html
         format.text { render partial: "tasks/task-card", locals: { tasks: @employee_tasks }, formats: [:html] }
       end
 
     end
-
   end
 
   def show
@@ -91,7 +90,7 @@ class TasksController < ApplicationController
   def order_steps(task_steps)
     order = 1
     task_steps.ids.sort.each do |step_id|
-      Step.find(step_id).update(order: order)
+      Step.find(step_id).update(order:)
       order += 1
     end
   end
