@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :employee_tasks, dependent: :destroy
   has_many :tasks, through: :employee_tasks
   has_many :visits
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :rank, presence: true
 
   has_one_attached :photo
 
