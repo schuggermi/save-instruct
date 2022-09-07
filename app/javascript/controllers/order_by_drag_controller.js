@@ -16,7 +16,7 @@ static targets = ["switchlabel"]
   updateOrder(event){
     const url = event.item.dataset.orderByDragUrl
     console.log(url)
-    fetch(url + `?new_position=${event.newIndex + 1}`)
+    fetch(url + `?new_position=${event.newIndex}`)
   }
 
   detach() {
