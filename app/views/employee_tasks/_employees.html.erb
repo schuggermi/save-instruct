@@ -2,9 +2,9 @@
   <li class="d-flex flex-row justify-content-between my-2 border-bottom pb-2">
     <div>
       <% if employee.photo.attached? %>
-        <%= cl_image_tag employee.photo.key, height: 40, width: 40, crop: :fill, class: "avatar" %>
+        <%= cl_image_tag employee.photo.key, height: 40, width: 40, crop: :fill, class: "avatar me-2" %>
       <% else %>
-        <%= image_tag "bee", height: 40, width: 40, class: "avatar" %>
+        <%= image_tag "bee", height: 40, width: 40, class: "avatar me-2" %>
       <% end %>
       <%= employee.first_name %> <%= employee.last_name %>
     </div>
