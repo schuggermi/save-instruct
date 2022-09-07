@@ -29,7 +29,14 @@
           <% end %>
         <% end %>
 
-        <p class="status"><span>Status:</span> <span class="status-icon <%= class_color %>"></span><br> <%= done_task %> out of <%= assigned_employee %> employees completed the task</p>
+        <div class="status">
+          <p class="mb-1">Status: <span class="status-icon <%= class_color %>"></span></p>
+          <% if assigned_employee == 0 %>
+            <p>No employees assigned </p>
+          <% else %>
+            <p><%= done_task %> out of <%= assigned_employee %> employees completed the task</p>
+          <% end %>
+        </div>
       <% end %>
 
       <div>

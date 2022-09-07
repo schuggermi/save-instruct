@@ -1,4 +1,10 @@
-<h2 class="my-4">New employee</h2>
+<%= link_to root_path do %>
+  <div class="button-outline-badge mt-4">
+    <%= image_tag "ui-icons/arrow-left-solid.svg", width: 20, height: 20 %>
+  </div>
+<% end %>
+
+<h2 class="mb-4">New employee</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
   data: {turbo: false}) do |f| %>

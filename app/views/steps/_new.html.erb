@@ -1,8 +1,8 @@
 <div class="nested-form-wrapper form-steps" data-new-record="<%= s.object.new_record? %>">
   <%= s.input :instruction %>
   <%= s.input :info %>
-  <div class="remove-step">
+  <div class="d-flex justify-content-end">
     <%= s.hidden_field :_destroy %>
-    <button type="button" data-action="nested-form#remove" class="button button-outline-purple">Remove step</button>
+    <button type="button" data-action="nested-form#remove" class="button button-outline-purple w-50">Remove step</button>
   </div>
 </div>

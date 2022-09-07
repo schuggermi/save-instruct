@@ -1,7 +1,12 @@
-<h1 class="my-4">New Task</h1>
+<%= link_to root_path do %>
+  <div class="button-outline-badge mt-4">
+    <%= image_tag "ui-icons/arrow-left-solid.svg", width: 20, height: 20 %>
+  </div>
+<% end %>
+
+<h1 class="mb-4">New Task</h1>
 
 <%= simple_form_for @task, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
-
   <%= f.input :name %>
   <%= f.input :description %>
 
@@ -20,5 +25,3 @@
 
   <%= f.submit class: "button button-orange mt-4" %>
 <% end %>
-
-<%= link_to "Cancel", root_path, class: "button button-outline-purple mt-4" %>
