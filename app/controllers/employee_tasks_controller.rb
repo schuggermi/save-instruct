@@ -6,9 +6,9 @@ class EmployeeTasksController < ApplicationController
 
     if params[:query].present?
       sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
-      @employees = User.where(sql_query, query: "%#{params[:query]}%")
+      @employees = User.where(sql_query, query: "%#{params[:query]}%").order('lower(first_name)')
     else
-      @employees = User.where(admin: false)
+      @employees = User.where(admin: false).order('lower(first_name)')
     end
   end
 
