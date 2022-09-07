@@ -25,7 +25,7 @@ static targets = ["switchlabel"]
       this.switchlabelTarget.innerText = "Sort off"
     } else {
       this.Sortable.options.disabled = false;
-      this.switchlabelTarget.innerText = "Sort on"
+      this.switchlabelTarget.innerText = "Sort on";
     }
   }
 }

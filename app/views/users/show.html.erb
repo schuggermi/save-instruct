@@ -8,11 +8,15 @@
 
   <h1 class="text-center mb-4"><%= @user.first_name %> <%= @user.last_name %></h1>
 
+  <% if @user.admin? %>
+    <p class="text-dark fw-bold pt-4 fs-3">Admin</p>
+  <% end %>
+
   <div class="profile_avatar mb-5">
     <% if @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill, class: "rounded-circle" %>
+      <%= cl_image_tag @user.photo.key, height: 140, width: 140, crop: :fill, class: "rounded-circle" %>
       <% else %>
-        <%= image_tag "bee", height: 120, width: 120, class: "rounded-circle" %>
+        <%= image_tag "bee", height: 140, width: 140, class: "rounded-circle" %>
     <% end %>
   </div>
 
@@ -34,10 +38,6 @@
         <p class="ps-3"><%= @user.email %></p>
       </div>
     </div>
-
-    <% if @user.admin? %>
-      <p class="text-danger">Admin</p>
-    <% end %>
   </div>
 
   <h2 class="mb-4">Tasks</h2>

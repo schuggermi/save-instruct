@@ -1,7 +1,7 @@
 <% if !users.count.negative? %>
 
   <% users.each do |user| %>
-     
+
     <div class="employee-card">
 
       <div class="content">
@@ -16,11 +16,9 @@
         <div class="info-container">
           <p><%= user.first_name %></p>
           <p><%= user.last_name %></p>
-          <p class="tasks"><%= pluralize user.tasks.size, "task" %> assigned</p> 
+          <p class="tasks"><%= pluralize user.tasks.size, "task" %> assigned</p>
           <% if user.admin == true %>
             <p>Admin</p>
-          <% else %>
-            <p>Employee</p>
           <% end %>
         </div>
       </div>
