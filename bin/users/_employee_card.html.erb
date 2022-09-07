@@ -1,0 +1,49 @@
+<% if !users.count.negative? %>
+
+  <% users.each do |user| %>
+     
+    <div class="employee-card">
+
+      <div class="content">
+        <div class="avatar-container">
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key, height: 120, width: 120, crop: :fill, class: "rounded-circle" %>
+          <% else %>
+            <%= image_tag "bee", height: 120, width: 120, class: "rounded-circle" %>
+          <% end %>
+        </div>
+
+        <div class="info-container">
+          <p><%= user.first_name %></p>
+          <p><%= user.last_name %></p>
+          <p class="tasks"><%= pluralize user.tasks.size, "task" %> assigned</p> 
+          <% if user.admin == true %>
+            <p>Admin</p>
+          <% else %>
+            <p>Employee</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <%= link_to employee_path(user), class: "button button-purple" do %>
+            Go to employee
+        <% end %>
+      </div>
+
+    </div>
+
+  <% end %>
+
+ <% end %>
+
+
+
+<%# SO... QUESTIONS
+1 DOES IT MAKE SENCE TO USE GRID INSTEAD OF FLEXBOX
+2 HOW CAN I INTEGRATE IN THE PARTIAL ANOTHER PARTIAL %>
+
+<%# has an avatar to the left %>
+<%# has the full name in the middle %>
+<%# has an icon to the right %>
+<%# <%= image_tag user.avatar.key, class: "card", alt:"User Avatar"%>
