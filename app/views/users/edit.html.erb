@@ -1,6 +1,11 @@
 <div class = "container">
+  <%= link_to employee_path(@user) do %>
+    <div class="button-outline-badge mt-4">
+      <%= image_tag "ui-icons/arrow-left-solid.svg", width: 20, height: 20 %>
+    </div>
+  <% end %>
+
   <h2>Edit <%= @user.first_name %>´s Profile</h2>
-  <div><%= image_tag "back-button.png", height: 50, width: 50 %><%= link_to "Back to Profile", employee_path %>
   </div>
   <br>
 

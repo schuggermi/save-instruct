@@ -1,21 +1,17 @@
-<%# here i have to conect the search icon to activate the search and take me to the employees profile %>
-<%# create a div that contains all the cards %>
-<%# after employees and the search icon, i have to display all of the cards of all the employees%>
-<%# make sure all of them are there by using the index method, perhaps also count%>
-<%# the CARD must contain an avatar, the employees full name and a link to his/her profile, make the last one a button %>
-<%# all the cards have the same blue color, the background will be white and an orange navbar %>
-<%# finally we need a function to scroll down, since there wont be enough space for all employees in one screen alone %>
-<%# also remember 360x640 for Android and 375x667 for iOS %>
-
 <div data-controller="search-items">
-  <div class="search-container" data-action="click->search-items#displaySearchForm">
+  <div class="d-flex justify-content-between align-items-center">
+    <%= link_to root_path do %>
+      <div class="button-outline-badge">
+        <%= image_tag "ui-icons/arrow-left-solid.svg", width: 20, height: 20 %>
+      </div>
+    <% end %>
     <h1 class="text-center">Employees</h1>
-    <div class="button-outline-badge">
-      <%= fa_icon "magnifying-glass" %>
+    <div class="button-outline-badge search-container" data-action="click->search-items#displaySearchForm">
+      <%= image_tag "ui-icons/magnifying-glass-solid.svg", width: 20, height: 20 %>
     </div>
   </div>
 
-  <div class="">
+  <div>
     <%= form_with url: employees_path, method: :get, html: {class:
     "search-form mb-4", data: {search_items_target: "form"}} do %>
       <%= text_field_tag :query,

@@ -1,6 +1,7 @@
-<%= link_to tasks_path, class: "" do %>
-  <%= image_tag "back-button.png", height: 50, width: 50, class: "mt-2"  %>
-  All Tasks
+<%= link_to tasks_path do %>
+  <div class="button-outline-badge my-4">
+    <%= image_tag "ui-icons/arrow-left-solid.svg", width: 20, height: 20 %>
+  </div>
 <% end %>
 
 <div class="container-fluid task-card">
