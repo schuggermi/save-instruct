@@ -17,8 +17,24 @@
   </div>
 
   <div>
-    <p class="d-flex justify-content-between">Rank/Jobtitle: <span class="ps-3"><%= @user.rank %></span></p>
-    <p class="d-flex justify-content-between">Email: <span class="ps-3"><%= @user.email %></span></p>
+    <div class="row">
+      <div class="col-6">
+        <p class="mb-1 fs-5 fw-bold"><%= fa_icon "user" %> Jobtitle</p>
+      </div>
+      <div class="col-12">
+        <p class="ps-3"><%= @user.rank %></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <p class="mb-1 fs-5 fw-bold"><%= fa_icon "envelope" %> Email</p>
+      </div>
+      <div class="col-12">
+        <p class="ps-3"><%= @user.email %></p>
+      </div>
+    </div>
+
     <% if @user.admin? %>
       <p class="text-danger">Admin</p>
     <% end %>
