@@ -1,5 +1,10 @@
-<div class = "container">
-<h1> EDIT TASK </h1>
+<%= link_to tasks_path do %>
+  <div class="button-outline-badge mt-4">
+    <%= image_tag "ui-icons/arrow-left-solid.svg", width: 20, height: 20 %>
+  </div>
+<% end %>
+
+<h1 class="mb-4">Edit Task</h1>
 <%= simple_form_for @task do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
