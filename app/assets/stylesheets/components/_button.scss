@@ -99,9 +99,9 @@ a.button-outline-purple:hover {
   background-color: $orange-light!important;
 }
 
-a.button-orange:hover {
-  // color: white!important;
-}
+// a.button-orange:hover {
+//   // color: white!important;
+// }
 
 .button-purple {
   background-color: $purple;
@@ -114,4 +114,18 @@ a.button-orange:hover {
 
 a.button-purple:hover {
   color: white!important;
+}
+
+.button-outline-black {
+  background-color: transparent!important;
+  border: 2px solid black;
+  font-family: $body-font;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  text-transform: capitalize;
+}
+
+a.button-outline-black:hover {
+  background-color: $orange-light!important;
 }
