@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
-  def index
+  def dashboard
+    @tasks = Task.count
+    @nfcs = Nfc.count
+    @employees = User.count
   end
 end
