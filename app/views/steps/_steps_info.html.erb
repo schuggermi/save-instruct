@@ -4,7 +4,7 @@
       <p class="fw-bold mb-0"><%= step.instruction %></p>
     </div>
     <% if current_user.admin? %>
-      <div class="col-2 d-flex justify-content-end align-items-center">
+      <div class="edit-step col-2 d-flex justify-content-end align-items-center">
         <p class="button-badge mb-0">
           <%= fa_icon "pencil", data: { action: "click->edit-step#display" }, class: "text-dark" %>
         </p>
