@@ -4,17 +4,17 @@
   <% if current_user.admin? %>
 
         <div class="row align-items-start">
-          <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+          <div class="col-6 col-lg-4 d-flex flex-column justify-content-center align-items-center">
             <p class="fw-bold mb-1">Total Tasks <%= fa_icon "list-check" %></p>
             <p class="button-badge"><%= @tasks %></p>
           </div>
 
-          <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+          <div class="col-6 col-lg-4 d-flex flex-column justify-content-center align-items-center">
             <p class="fw-bold mb-1 text-center">Total Employees <%= fa_icon "users" %></p>
             <p class="button-badge"><%= @employees %></p>
           </div>
 
-          <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+          <div class="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center">
             <p class="fw-bold mb-1 text-center">Total NFC's <%= fa_icon "microchip" %></p>
             <p class="button-badge"><%= @nfcs %></p>
           </div>
