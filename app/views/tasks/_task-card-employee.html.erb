@@ -11,7 +11,7 @@
       <% class_color = "" %>
       <% status = "" %>
       <% if employee.task_done? %>
-        <% if employeetask_done.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d") %>
+        <% if employee.task_done.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d") %>
           <% class_color = "green" %>
           <% status = "Done" %>
         <% else %>
