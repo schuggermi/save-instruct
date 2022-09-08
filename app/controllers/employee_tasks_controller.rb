@@ -14,30 +14,40 @@ class EmployeeTasksController < ApplicationController
 
   def create
     @employee_tasks = EmployeeTask.where(task: @task)
-    @employee_tasks_user_ids = []
-    @user_ids = params[:user_ids]
+    @employee_tasks_user_ids = [] # ["24", "1", "2"]
+    @user_ids = params[:user_ids] # ["24", "16"]
 
+    # If no employee was checked, delete all EmployeeTask related to current Task and finish
     if params[:user_ids].blank?
       EmployeeTask.where(task: @task).destroy_all
       redirect_to task_path(@task)
       return
     end
 
+    # Create array with id of users assigned already to task for later comparison
     @employee_tasks.each do |e_task|
-      @employee_tasks_user_ids << e_task.user.id
-      @user_ids.include?(e_task.user.id) ? next : e_task.destroy
+      @employee_tasks_user_ids << e_task.user.id.to_s
     end
 
+    # Process every user id received in the form
     params[:user_ids].each do |user|
-      @employee_task = EmployeeTask.new
-      @employee_task.task = @task
-      @employee_task.user = User.find(user)
-      next if @employee_task.save
+      # If user id already exists, the record remains untouched
+      # If not exists, create new record
+      if !@employee_tasks_user_ids.include?(user)
+        @employee_task = EmployeeTask.new
+        @employee_task.task = @task
+        @employee_task.user = User.find(user)
 
-      render :new, status: :unprocessable_entity
+        @employee_task.save
+      end
     end
 
-    redirect_to task_path(@employee_task.task)
+    # If user id of EmployeeTask is not included in params[:user_ids], then user was removed from Task and need to delete the record
+    @employee_tasks.each do |e_task|
+      @user_ids.include?(e_task.user.id.to_s) ? next : e_task.destroy
+    end
+
+    redirect_to task_path(@task)
   end
 
   def update
