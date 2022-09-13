@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+<iframe src="https://schuggermi.github.io/save-instruct-landing/" title="Save Instruct - App explanation" width="800" height="450"></iframe>
