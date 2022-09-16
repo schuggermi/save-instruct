@@ -1,1 +1,1 @@
-<a href="https://www.saveinstruct.com/" target="_blank" style="background-color: rgb(162, 144, 188); padding: 10px 25px; font-weight: 600; color: white;">Save Instruct Landing page - Check out more informations here!</a>
+<a href="https://www.saveinstruct.com/">Save Instruct Landing page - Check out more informations here!</a>
